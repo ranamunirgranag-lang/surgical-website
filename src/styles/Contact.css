@@ -1,0 +1,217 @@
+/* ==========================================================================
+   CONTACT PAGE - 100% FULL-SCREEN EDGE-TO-EDGE SPLIT DASHBOARD Layout
+   ========================================================================== */
+
+.contact-page-container {
+  padding: 0 !important; /* Saari side ki space aur padding khatam */
+  margin: 0 !important;
+  width: 100vw;
+  min-height: calc(100vh - 70px); /* Navbar ke niche poori screen cover kare ga */
+  box-sizing: border-box;
+  background: #ffffff; /* Default overall grid baseline */
+}
+
+/* 🏢 MAIN DYNAMIC SPLIT SPLIT GRID - CORNER TO CORNER NO BOX DISPLAY */
+.contact-premium-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Screen Divided into 2 absolute equal blocks */
+  width: 100vw; /* Full edge to edge screen alignment width */
+  min-height: calc(100vh - 70px);
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important; /* Dabba style corners completely layout level rounded flat */
+  box-shadow: none !important; /* Separation dabba lines removed */
+  border: none !important;
+  box-sizing: border-box;
+}
+
+/* 🟦 LEFT BLOCK: FULL EDGE-TO-EDGE BLUE GRADIENT BRANDING PANEL */
+.hq-info-panel-card {
+  background: linear-gradient(135deg, #0284c7, #0f172a); /* Royal Medical Blue to Deep Slate */
+  padding: 60px 8%; /* Left edge padding optimized like sir's portal */
+  color: #ffffff !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 35px;
+  border-radius: 0 !important; /* Zero roundness border grid edge connection */
+  margin: 0 !important;
+  box-sizing: border-box;
+}
+
+.hq-info-panel-card h3 {
+  font-size: 32px; /* Bigger hero-text title sizing */
+  font-weight: 850;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.hq-description {
+  font-size: 16px;
+  color: #cbd5e1;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* Contacts details internal icons container */
+.hq-details-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.hq-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.hq-icon-box {
+  background: rgba(255, 255, 255, 0.12);
+  color: #38bdf8;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.hq-text h4 {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hq-text p {
+  font-size: 14.5px;
+  color: #e2e8f0;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ⬜ RIGHT BLOCK: FULL SCREEN PURE WHITE FORM INTERFACE PANEL */
+.form-workspace-card {
+  background: #ffffff;
+  padding: 60px 10%; /* Right corner spacing adjustments perfectly mirrored */
+  border-radius: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.form-workspace-card h3 {
+  font-size: 28px;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+  border-left: 5px solid #0284c7; /* Brand vertical accent tracker mark bar */
+  padding-left: 16px;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.form-sub-label {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 40px 0;
+  padding-left: 21px;
+}
+
+/* Form inputs matrix rows controls */
+.premium-executive-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-input-split-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.executive-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.executive-input-field label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.executive-input-field input, .executive-input-field textarea {
+  background: #f8fafc; /* Crisp clean gray input panels */
+  border: 1px solid #cbd5e1;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14.5px;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.executive-input-field input:focus, .executive-input-field textarea:focus {
+  border-color: #0284c7;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+}
+
+/* Sharp Bold Transmit Button Dashboard element */
+.btn-executive-submit {
+  background: #0f172a; /* Heavy solid black brand layout button button link */
+  color: #ffffff;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 15px;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.12);
+}
+
+.btn-executive-submit:hover {
+  background: #1e293b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.2);
+}
+
+/* 📱 EXECUTIVE FULL RESPONSIBILITY OVERRIDES FOR MOBILE FLUID ACCENT */
+@media (max-width: 992px) {
+  .contact-premium-split-grid {
+    grid-template-columns: 1fr; /* Stack columns vertically for responsiveness */
+    min-height: auto;
+  }
+  
+  .hq-info-panel-card, .form-workspace-card {
+    padding: 50px 5%;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-input-split-row {
+    grid-template-columns: 1fr;
+  }
+}

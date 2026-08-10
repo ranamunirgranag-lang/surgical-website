@@ -1,0 +1,181 @@
+/* ==========================================================================
+   PRODUCTS CATALOG COMPLETE ORIGINAL WHITE DESIGN SYSTEM 
+   ========================================================================== */
+.products-page-container {
+  width: 100%;
+  max-width: 100%; 
+  margin: 0;
+  padding: 40px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+.products-hero-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #0284c7 60%, #0ea5e9 100%);
+  border-radius: 24px;
+  padding: 50px 40px;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+  margin-bottom: 40px;
+}
+
+.products-hero-banner h2 {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.products-hero-banner p {
+  font-size: 16px;
+  color: #e0f2fe;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.search-filter-central-hub {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 35px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  min-width: 300px;
+}
+
+.search-input-wrapper input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 2px solid #e2e8f0;
+  background: white;
+  font-size: 15px;
+  color: #1e293b;
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s;
+}
+
+.search-input-wrapper input:focus {
+  border-color: #0284c7;
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.08);
+}
+
+.central-dropdown-wrapper {
+  position: relative;
+  min-width: 260px;
+}
+
+.dropdown-toggle-trigger-btn {
+  width: 100%;
+  padding: 16px 20px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  color: #475569;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-slide-menu-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.12);
+  border: 1px solid #e2e8f0;
+  list-style: none;
+  padding: 8px;
+  z-index: 100;
+}
+
+.dropdown-slide-menu-list li {
+  padding: 12px 16px;
+  border-radius: 10px;
+  color: #475569;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-slide-menu-list li:hover {
+  background: #f1f5f9;
+  color: #0284c7;
+}
+
+.active-dropdown-item {
+  background: #e0f2fe !important;
+  color: #0284c7 !important;
+  font-weight: bold !important;
+}
+
+/* ORIGINAL GRID LAYOUT */
+.products-grid-view-fullwidth {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  background: white !important;
+  border-radius: 20px !important;
+  padding: 24px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01) !important;
+  box-sizing: border-box !important;
+}
+
+/* ORIGINAL PURE WHITE IMAGE RENDER LOOP */
+.product-card img {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: contain !important; /* Wapas images ko asli original size me kar dia */
+  background-color: #ffffff !important; /* Pure clean white background */
+  border-radius: 14px !important;
+  padding: 12px !important;
+  margin-bottom: 16px !important;
+  box-sizing: border-box !important;
+}
+
+.product-card h3 {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.product-card p {
+  font-size: 13px !important;
+  color: #64748b !important;
+  line-height: 1.5 !important;
+  margin: 0 0 16px 0 !important;
+}
+
+.auth-button-heavy {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}

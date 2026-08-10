@@ -1,0 +1,79 @@
+.modern-footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 40px 2%; /* Isay bhi 2% kar diya takay margins baki website se match karain */
+  margin-top: 60px;
+  border-top: 1px solid #1e293b;
+  width: 100vw; /* Poori screen ki width le le ga */
+  box-sizing: border-box;
+}
+.footer-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  margin: 0 auto 30px auto; /* Centered layout with auto margins */
+  width: 100%;
+  max-width: 1200px; /* Text ko mazeed baahir phelne se rokay ga */
+  padding: 0 20px; /* Side se space de ga */
+  box-sizing: border-box;
+}
+
+
+.footer-section h3 {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.footer-section p {
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.footer-icon {
+  color: #0284c7;
+}
+
+.footer-bottom {
+  border-top: 1px solid #1e293b;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+  width: 100%;
+}
+
+/* 📱 MOBILE & TABLET RESPONSIVE FOR FOOTER */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr; /* Mobile par sections ek ke neeche ek aayen ge */
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-section p {
+    margin: 0 auto; /* Paragraph ko center karne ke liye */
+  }
+
+  .footer-contact-list li {
+    justify-content: center; /* Icons aur text center me ho jayen ge */
+  }
+}
+

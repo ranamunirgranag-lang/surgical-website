@@ -1,0 +1,764 @@
+.home-container {
+  padding: 60px 2%;
+  background: #f1f5f9; /* Khubsurat soft gray background takay white cards upar uthein */
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.feature-modern-card {
+  background: #ffffff; /* Bilkul clean white card */
+  padding: 40px 30px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04); /* Halka sa aur premium shadow */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-modern-card:hover {
+  transform: translateY(-8px); /* Card thoda aur upar move hoga hover par */
+  border-color: #0284c7;
+  box-shadow: 0 20px 35px rgba(2, 132, 199, 0.1); /* Hover par shadow aur behtar hogi */
+}
+
+
+/* Split Screen Hero Layout - Full Screen Width */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 80px;
+  width: 100%; /* Apne container ke mutabiq 100% phel jaye ga */
+}
+
+
+.hero-text-content .badge-tech {
+  background: #e0f2fe;
+  color: #0284c7;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.hero-text-content h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-text-content p {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+.hero-cta-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+}
+
+.btn-secondary-outline {
+  background: transparent;
+  color: #0f172a;
+  border: 2px solid #cbd5e1;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-outline:hover {
+  border-color: #0f172a;
+  background: #f1f5f9;
+}
+
+/* Stats Styling */
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 30px;
+}
+
+.stat-box h3 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0284c7;
+  margin-bottom: 4px;
+}
+
+.stat-box p {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Mosaic Image Layout */
+.hero-image-mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  position: relative;
+}
+
+.mosaic-card {
+  height: 200px;
+  border-radius: 16px;
+  display: flex;
+  align-items: flex-end;
+  padding: 15px;
+  font-weight: 700;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  background: #cbd5e1; /* Image placeholders */
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  transition: all 0.4s ease;
+}
+
+/* Modern Glassmorphism Text label inside images */
+.mosaic-label {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.card-1 {
+  grid-row: span 2;
+  height: 416px;
+  background: linear-gradient(rgba(2, 132, 199, 0.2), rgba(15, 23, 42, 0.8)), url('product1.jpeg') no-repeat center/cover;
+}
+
+.card-2 {
+  background: linear-gradient(rgba(2, 132, 199, 0.2), rgba(15, 23, 42, 0.8)), url('product2.jpeg') no-repeat center/cover;
+}
+
+.card-3 {
+  background: linear-gradient(rgba(2, 132, 199, 0.2), rgba(15, 23, 42, 0.8)), url('product3.jpeg') no-repeat center/cover;
+}
+
+.mosaic-card:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 15px 35px rgba(2, 132, 199, 0.2);
+}
+
+/* Core Features Section */
+.core-features-section {
+  margin-top: 100px;
+  padding: 60px 0;
+}
+
+.section-header-centered {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 50px auto;
+}
+
+.section-header-centered h2 {
+  font-size: 42px; /* Size 32px se barha kar 42px kar diya */
+  font-weight: 850; /* Ek dam heavy bold look */
+  color: #0f172a; /* Dark premium corporate slate color */
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.section-header-centered p {
+  color: #64748b;
+  font-size: 18px; /* Subtitle text ka size bhi 16px se 18px kar diya */
+  font-weight: 500;
+}
+
+
+.features-asymmetric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.feat-icon-wrapper {
+  background: #f0f9ff;
+  color: #0284c7;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+
+.feature-modern-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.feature-modern-card p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+/* Mobile and Tablet Responsive Styles for Home Page */
+@media (max-width: 992px) {
+  .hero-split {
+    grid-template-columns: 1fr; /* Do columns ki jagah ek column ho jaye ga */
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-text-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-cta-buttons {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .features-asymmetric-grid {
+    grid-template-columns: repeat(2, 1fr); /* Tablet par 2 cards dikhein ge */
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-text-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-cta-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .hero-image-mosaic {
+    grid-template-columns: 1fr; /* Mobile par pictures ek ke neeche ek aayengi */
+  }
+
+  .card-1 {
+    height: 250px;
+  }
+
+  .features-asymmetric-grid {
+    grid-template-columns: 1fr; /* Mobile par features ek ke neeche ek aayen ge */
+  }
+}
+/* ==========================================================================
+   3. NEXT-GEN SURGICAL MANUFACTURING LAB SHOWCASE STYLES (LUXURY CONTRAST DUAL-TONE)
+   ========================================================================== */
+.manufacturing-lab-showcase {
+  padding: 80px 50px;
+  /* FIXED: Dark slate blue corporate theme background pattern inject kar dia */
+  background: linear-gradient(135deg, #0b1329 0%, #111c44 100%);
+  border-radius: 32px;
+  margin-top: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(11, 19, 41, 0.2);
+}
+
+/* Background floating technical light layers */
+.manufacturing-lab-showcase::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: rgba(2, 132, 199, 0.15);
+  filter: blur(100px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.lab-split-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Left Visual Canvas Frame Styles */
+.lab-video-canvas {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  height: 480px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lab-main-visual {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0.95);
+}
+
+.lab-video-canvas:hover .lab-main-visual {
+  transform: scale(1.05);
+}
+
+/* Pulse Medical Overlay Core Ring Animation */
+.pulse-play-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85px;
+  height: 85px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 15px 35px rgba(2, 132, 199, 0.3);
+  z-index: 5;
+  transition: 0.3s;
+}
+
+.pulse-play-layer:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: #e0f2fe;
+}
+
+.play-button-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #0284c7;
+  border-radius: 50%;
+  animation: glowPulseRing 2.5s infinite ease-in-out;
+}
+
+.play-icon-medical {
+  font-size: 30px;
+}
+
+.floating-badge-production {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  background: rgba(11, 19, 41, 0.85);
+  backdrop-filter: blur(8px);
+  color: #f8fafc;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.live-dot-pulse {
+  width: 8px;
+  height: 8px;
+  background: #f43f5e;
+  border-radius: 50%;
+  display: inline-block;
+  animation: redDotBlink 1.5s infinite;
+}
+
+/* Right Metrics Specifications Typography Styles */
+.lab-technical-specs {
+  text-align: left;
+}
+
+.specs-subheading {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #38bdf8; /* Vibrant light blue tone */
+  letter-spacing: 2px;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 6px 14px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 18px;
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.lab-technical-specs h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #ffffff; /* Crystal white main header */
+  line-height: 1.2;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+
+.specs-lead-text {
+  font-size: 15px;
+  color: #94a3b8; /* Soft readable secondary text */
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+.tech-specs-stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.spec-bullet-row {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.spec-bullet-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(56, 189, 248, 0.3);
+  transform: translateX(8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.bullet-glow-dot {
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #38bdf8;
+  font-weight: 800;
+  font-size: 15px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.spec-bullet-row:hover .bullet-glow-dot {
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+}
+
+.bullet-data-text h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff; /* Bright white subheadings */
+  margin: 0 0 6px 0;
+  letter-spacing: 0.2px;
+}
+
+.bullet-data-text p {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Animations Keyframes Map */
+@keyframes glowPulseRing {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@keyframes redDotBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Responsive View Boundaries for Lab Section */
+@media (max-width: 960px) {
+  .manufacturing-lab-showcase {
+    padding: 50px 24px;
+  }
+  .lab-split-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .lab-video-canvas {
+    height: 350px;
+  }
+  .lab-technical-specs h2 {
+    font-size: 28px;
+  }
+}
+/* ==========================================================================
+   4. GLOBAL TRUST & TESTIMONIALS (ULTRA-PREMIUM ANIMATED SKY-BLUE VERSION)
+   ========================================================================== */
+.global-trust-testimonials {
+  padding: 100px 50px !important;
+  background: linear-gradient(135deg, #eef2f6 0%, #e2e8f0 100%) !important; /* Premium soft ice-blue layered layout */
+  border-radius: 32px !important;
+  margin-top: 50px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-shadow: inset 0 4px 30px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Background floating abstract glow effect */
+.global-trust-testimonials::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 250px;
+  height: 250px;
+  background: rgba(2, 132, 199, 0.06);
+  filter: blur(80px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.trust-split-grid {
+  display: grid !important;
+  grid-template-columns: 0.9fr 1.1fr !important;
+  gap: 60px !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+}
+
+/* Left Section: Headings and Metrics Numbers styling */
+.trust-metrics-panel { 
+  text-align: left !important;
+  position: relative;
+  z-index: 2;
+}
+
+.trust-badge-tag {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  color: #0284c7 !important;
+  letter-spacing: 1.5px !important;
+  background: #ffffff !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  display: inline-block !important;
+  margin-bottom: 20px !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.trust-metrics-panel h2 {
+  font-size: 38px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  line-height: 1.2 !important;
+  margin-bottom: 20px !important;
+  letter-spacing: -0.5px !important;
+}
+
+.trust-description-lead {
+  font-size: 15px !important;
+  color: #475569 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 40px !important;
+}
+
+.metrics-expanded-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+}
+
+/* Metrics Counter Cards with Soft Lift Animation */
+.metric-data-card {
+  background: #ffffff !important;
+  padding: 26px !important;
+  border-radius: 20px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.02) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.metric-data-card:hover {
+  border-color: #0284c7 !important;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 35px rgba(2, 132, 199, 0.1) !important;
+}
+
+.metric-data-card h3 {
+  font-size: 34px !important;
+  color: #0284c7 !important;
+  font-weight: 800 !important;
+  margin: 0 0 6px 0 !important;
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.metric-data-card h4 {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.metric-data-card p {
+  font-size: 12px !important;
+  color: #64748b !important;
+  line-height: 1.5 !important;
+}
+
+/* Right Section: Testimonial Cards Layout and Moving Shine Effects */
+.testimonials-cards-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 28px !important;
+}
+
+.testimonial-luxury-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 24px !important;
+  padding: 35px !important;
+  position: relative !important;
+  text-align: left !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.02) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden;
+}
+
+/* Premium diagonal shine animation when hovering on testimonials */
+.testimonial-luxury-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(2, 132, 199, 0.03), transparent);
+  transition: all 0.6s;
+}
+
+.testimonial-luxury-card:hover::before {
+  left: 100%;
+}
+
+.testimonial-luxury-card:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.06) !important;
+  border-color: #cbd5e1 !important;
+}
+
+.quote-icon-decor {
+  font-size: 64px !important;
+  color: #e2e8f0 !important;
+  font-family: Georgia, serif !important;
+  position: absolute !important;
+  top: 8px !important;
+  left: 24px !important;
+  opacity: 0.6;
+}
+
+.testimonial-speech-text {
+  font-size: 14px !important;
+  color: #334155 !important;
+  line-height: 1.7 !important;
+  margin-bottom: 24px !important;
+  font-style: italic !important;
+  position: relative;
+  z-index: 2;
+}
+
+.buyer-profile-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.buyer-avatar-placeholder {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%) !important;
+  color: white !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
+}
+
+.buyer-meta-info h4 {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin: 0 0 2px 0 !important;
+}
+
+.buyer-meta-info p {
+  color: #64748b !important;
+  font-size: 12px !important;
+  margin: 0 !important;
+}
+
+/* Responsive adjustments for mobile/smaller screens */
+@media (max-width: 960px) {
+  .global-trust-testimonials {
+    padding: 60px 24px !important;
+  }
+  .trust-split-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .trust-metrics-panel h2 {
+    font-size: 30px !important;
+  }
+}
+
+

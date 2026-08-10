@@ -1,0 +1,249 @@
+.about-page-container {
+  padding: 40px 0;
+  width: 100vw;
+  box-sizing: border-box;
+  background: transparent !important;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Epic Hero Banner */
+.about-header-banner-premium {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.85)), 
+              url('https://unsplash.com') no-repeat center/cover;
+  padding: 80px 5%;
+  text-align: center;
+  color: white;
+  margin-bottom: 50px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.banner-glass-overlay {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  padding: 35px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.about-subtitle-tech {
+  color: #38bdf8;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.about-header-banner-premium h2 {
+  font-size: 38px;
+  font-weight: 900;
+  margin: 0 0 15px 0;
+  line-height: 1.2;
+}
+
+.about-header-banner-premium p {
+  font-size: 15.5px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Dual Pillars */
+.about-pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.pillar-modern-card {
+  padding: 35px;
+  border-radius: 16px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.03);
+}
+
+.mandate-blue {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: white;
+}
+
+.quality-slate {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+}
+
+.pillar-icon-box {
+  font-size: 30px;
+  padding: 14px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mandate-blue .pillar-icon-box {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.quality-slate .pillar-icon-box {
+  background: #f0f9ff;
+  color: #0284c7;
+}
+
+.pillar-text-content h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+}
+
+.pillar-text-content p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.quality-slate .pillar-text-content p {
+  color: #475569;
+}
+
+/* Process Workflow Section */
+.about-detailed-workflow {
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section-title-centered-premium {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 35px auto;
+}
+
+.section-title-centered-premium h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.section-title-centered-premium p {
+  color: #64748b;
+  font-size: 14.5px;
+}
+
+.workflow-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.workflow-card-premium {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02);
+  transition: all 0.3s ease;
+}
+
+.workflow-card-premium:hover {
+  transform: translateY(-5px);
+  border-color: #0284c7;
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.06);
+}
+
+.workflow-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 9px;
+  font-weight: 800;
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.w-icon-box {
+  background: #f0f9ff;
+  color: #0284c7;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.workflow-card-premium h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 10px 0;
+}
+
+.workflow-card-premium p {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ⚡ Highlights, Text Colors & Scroll Animations Setup */
+@keyframes smoothFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-highlight {
+  color: #0284c7;
+  font-weight: 700;
+}
+
+.text-highlight-blue-title {
+  color: #38bdf8;
+  font-weight: 800;
+}
+
+.animate-fade-up {
+  animation: smoothFadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Entry Delays */
+.about-header-banner-premium { animation-delay: 0.05s; }
+.about-pillars-grid .pillar-modern-card:nth-child(1) { animation-delay: 0.1s; }
+.about-pillars-grid .pillar-modern-card:nth-child(2) { animation-delay: 0.15s; }
+.workflow-timeline-grid .workflow-card-premium:nth-child(1) { animation-delay: 0.2s; }
+.workflow-timeline-grid .workflow-card-premium:nth-child(2) { animation-delay: 0.25s; }
+.workflow-timeline-grid .workflow-card-premium:nth-child(3) { animation-delay: 0.3s; }
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .about-pillars-grid, .workflow-timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
