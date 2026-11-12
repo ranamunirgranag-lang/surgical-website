@@ -161,15 +161,15 @@
 .card-1 {
   grid-row: span 2;
   height: 416px;
-  background: linear-gradient(rgba(2, 132, 199, 0.2), rgba(15, 23, 42, 0.8)), url('product1.jpeg') no-repeat center/cover;
+  background: linear-gradient(rgba(2, 132, 199, 0.2), rgba(15, 23, 42, 0.8)), url('/product1.jpeg') no-repeat center/cover;
 }
 
 .card-2 {
-  background: linear-gradient(rgba(2, 132, 199, 0.2), rgba(15, 23, 42, 0.8)), url('product2.jpeg') no-repeat center/cover;
+  background: linear-gradient(rgba(2, 132, 199, 0.2), rgba(15, 23, 42, 0.8)), url('/product2.jpeg') no-repeat center/cover;
 }
 
 .card-3 {
-  background: linear-gradient(rgba(2, 132, 199, 0.2), rgba(15, 23, 42, 0.8)), url('product3.jpeg') no-repeat center/cover;
+  background: linear-gradient(rgba(2, 132, 199, 0.2), rgba(15, 23, 42, 0.8)), url('/product3.jpeg') no-repeat center/cover;
 }
 
 .mosaic-card:hover {

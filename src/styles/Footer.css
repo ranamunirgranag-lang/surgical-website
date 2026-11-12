@@ -1,79 +1,267 @@
+/* ==========================================================================
+   ✨ RANA APEX SURGICAL - HIGH CONTRAST LUXURY DUAL-TONE FOOTER
+   ========================================================================== */
+
 .modern-footer {
-  background: #0f172a;
-  color: #cbd5e1;
-  padding: 40px 2%; /* Isay bhi 2% kar diya takay margins baki website se match karain */
-  margin-top: 60px;
-  border-top: 1px solid #1e293b;
-  width: 100vw; /* Poori screen ki width le le ga */
-  box-sizing: border-box;
-}
-.footer-content {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 40px;
-  margin: 0 auto 30px auto; /* Centered layout with auto margins */
-  width: 100%;
-  max-width: 1200px; /* Text ko mazeed baahir phelne se rokay ga */
-  padding: 0 20px; /* Side se space de ga */
-  box-sizing: border-box;
+  width: 100% !important;
+  background-color: #0f172a !important; /* Upper Half: Rich Professional Dark */
+  border-top: 1px solid #1e293b !important;
+  padding: 64px 0 0 0 !important; /* Touch bottom boundary edge */
+  box-sizing: border-box !important;
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  color: #94a3b8 !important;
 }
 
-
-.footer-section h3 {
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
+.footer-top-grid {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 24px 48px 24px !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 40px !important;
 }
 
-.footer-section p {
-  font-size: 14px;
-  line-height: 1.6;
-  max-width: 400px;
+@media (min-width: 768px) {
+  .footer-top-grid {
+    grid-template-columns: 2fr 1.2fr 1.2fr 1.5fr !important; /* Clear symmetry columns mapping */
+    gap: 32px !important;
+  }
+}
+
+/* Company Vision Portfolio Column */
+.footer-brand-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.footer-logo-title-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.footer-logo-icon {
+  font-size: 24px !important;
+}
+
+.footer-brand-column h3 {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.05em !important;
+  margin: 0 !important;
+}
+
+.footer-brand-desc {
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+  color: #94a3b8 !important;
+  margin: 0 !important;
+  max-width: 400px !important;
+}
+
+/* Regulatory Compliance Badges Matrix */
+.footer-trust-badges {
+  display: flex !important;
+  gap: 10px !important;
+  margin-top: 8px !important;
+  flex-wrap: wrap !important;
+}
+
+.badge-pill {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #38bdf8 !important; /* Medical Tech Cyan highlight */
+  background: rgba(56, 189, 248, 0.06) !important;
+  border: 1px solid rgba(56, 189, 248, 0.15) !important;
+  padding: 4px 12px !important;
+  border-radius: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  letter-spacing: 0.03em !important;
+}
+/* Quick Links Architecture Columns */
+.footer-links-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+.footer-links-column h4,
+.footer-contact-column h4 {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  margin: 0 !important;
+}
+
+.footer-navigation-links {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.footer-navigation-links a {
+  font-size: 13.5px !important;
+  color: #94a3b8 !important;
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: inline-block !important;
+}
+
+.footer-navigation-links a:hover {
+  color: #38bdf8 !important; /* Soft cyan glide on hover */
+  transform: translateX(4px) !important;
+}
+
+/* Contact Details Layout Configuration */
+.footer-contact-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
 }
 
 .footer-contact-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
 }
 
 .footer-contact-list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  margin-bottom: 12px;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+  color: #94a3b8 !important;
 }
 
-.footer-icon {
-  color: #0284c7;
+.icon-circle {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  background-color: #1e293b !important;
+  color: #38bdf8 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 13px !important;
+  flex-shrink: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.03) !important;
 }
 
-.footer-bottom {
-  border-top: 1px solid #1e293b;
-  padding-top: 20px;
-  text-align: center;
-  font-size: 13px;
-  color: #64748b;
-  width: 100%;
+.footer-email-link {
+  word-break: break-all !important;
 }
 
-/* 📱 MOBILE & TABLET RESPONSIVE FOR FOOTER */
-@media (max-width: 768px) {
-  .footer-content {
-    grid-template-columns: 1fr; /* Mobile par sections ek ke neeche ek aayen ge */
-    gap: 30px;
-    text-align: center;
+/* ==========================================================================
+   ⚪ HIGH CONTRAST LOWER STRIP - LUXURY LIGHT FROST BASE
+   ========================================================================== */
+.footer-bottom-horizon {
+  width: 100% !important;
+  background-color: #f1f5f9 !important; /* Pure Light Frost Half Change */
+  padding: 24px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  align-items: center !important;
+  text-align: center !important;
+  border-top: 1px solid #e2e8f0 !important;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom-horizon {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    padding: 24px calc((100% - 1152px) / 2 + 24px) !important; /* Grid matching center bounds alignment */
+    text-align: left !important;
   }
-
-  .footer-section p {
-    margin: 0 auto; /* Paragraph ko center karne ke liye */
-  }
-
-  .footer-contact-list li {
-    justify-content: center; /* Icons aur text center me ho jayen ge */
-  }
 }
 
+.footer-bottom-horizon p {
+  font-size: 13px !important;
+  color: #475569 !important; /* High contrast dark text on light base */
+  margin: 0 !important;
+  font-weight: 500 !important;
+}
+
+.footer-bottom-horizon p strong {
+  color: #0f172a !important; /* Bold Obsidian name brand */
+}
+
+.footer-tech-signature {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #64748b !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: color 0.2s ease !important;
+}
+
+.footer-tech-signature:hover {
+  color: #0284c7 !important; /* Deep corporate blue hover link */
+}
+/* ==========================================================================
+   🌐 PREMIUM BRAND SOCIAL MEDIA UTILITY INTERFACES
+   ========================================================================== */
+.footer-social-media-wrapper {
+  display: flex !important;
+  gap: 12px !important;
+  margin: 12px 0 4px 0 !important;
+}
+
+.social-icon-btn {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 8px !important;
+  background-color: #1e293b !important; /* Soft default slate background */
+  color: #94a3b8 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 15px !important;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Authentic Social Colors Hover Transformations */
+.social-icon-btn.facebook:hover {
+  background-color: #1877f2 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(24, 119, 242, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.social-icon-btn.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(220, 39, 67, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.social-icon-btn.linkedin:hover {
+  background-color: #0077b5 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 119, 181, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.social-icon-btn.youtube:hover {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.3) !important;
+  transform: translateY(-2px) !important;
+}

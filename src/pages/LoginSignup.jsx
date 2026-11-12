@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { useAuth } from '../AuthContext';
 import { FaEye, FaEyeSlash, FaLock, FaEnvelope, FaUser, FaPhone } from 'react-icons/fa'; 
+import axios from 'axios'; // Axios ko direct import kar liya taake config ka rona na rahe
 import '../styles/LoginSignup.css';
 
 function LoginSignup({ setCurrentPage }) {
   const [isLogin, setIsLogin] = useState(true);
-  const { loginUser, registerUser } = useAuth();
+  const { loginUser } = useAuth();
   const [formData, setFormData] = useState({ name: '', email: '', password: '', phone: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState('');
+
+  // Live URL Setup: Agar env file nahi bhi bani, toh fallback local par chalega
+  const BACKEND_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
   const checkPasswordStrength = (password) => {
     if (!password) { setPasswordStrength(''); return; }
@@ -24,13 +28,15 @@ function LoginSignup({ setCurrentPage }) {
     if (e.target.name === 'password') { checkPasswordStrength(e.target.value); }
   };
 
-  const handleSubmit = async (e) => {
+   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLogin) {
       // 🔐 SECRET ADMIN BYPASS PORTAL ENTRY GATE
-      if (formData.email.trim() === 'faqeehataskeen@apex.com' || formData.email.trim() === 'faqeehataskeen@apex.com') {
+      if (formData.email.trim() === 'faqeehataskeen@apex.com') {
         if (formData.password === 'faqeeha07@') {
           alert("🔓 Access Granted: Welcome Back, Master Admin Faqeeha Taskeen!");
+          localStorage.setItem('token', '6a7d6ce8bd12a58dcb8bc557');
+          localStorage.setItem('userPic', 'https://unsplash.com'); 
           setCurrentPage('admin');
           return;
         } else {
@@ -39,20 +45,49 @@ function LoginSignup({ setCurrentPage }) {
         }
       }
       
-      const response = await loginUser(formData.email, formData.password);
-      alert(response.msg);
-      if (response.success) { setCurrentPage('products'); }
+      // 🟢 LOCAL TESTING FOR LOGIN
+      try {
+        const response = await axios.post(`${BACKEND_API_URL}/auth/login`, { email: formData.email, password: formData.password });
+        if (response.data.success) {
+          alert("🔓 Login Successful!");
+          localStorage.setItem('token', response.data.token || response.data.user._id);
+          setCurrentPage('dashboard');
+        } else {
+          alert(`⚠️ ${response.data.msg}`);
+        }
+      } catch (err) {
+        const response = await loginUser(formData.email, formData.password);
+        alert(response.msg);
+        if (response.success) {
+          localStorage.setItem('token', response.token || '6a7d6ce8bd12a58dcb8bc557');
+          setCurrentPage('dashboard');
+        }
+      }
     } else {
-      // 🛡️ SUBMIT REGISTRATION FOR RETAL CUSTOMERS
-      const response = await registerUser({
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        pmdcLicense: formData.phone, // Database fields schema tracking configuration
-        hospitalName: "Public Retail Buyer"
-      });
-      alert(response.msg);
-      if (response.success) { setIsLogin(true); }
+      // 🛡️ DIRECT STRIPPED LOCAL SUBMIT FOR REGISTRATION
+      try {
+        const payload = {
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          pmdcLicense: formData.phone, 
+          hospitalName: "Public Retail Buyer"
+        };
+        
+        // 🔥 FIXED: /auth/register ko badal kar /auth/signup kar diya backend ke mutabiq
+        const res = await axios.post(`${BACKEND_API_URL}/auth/signup`, payload);
+        
+        if (res.data.success) {
+          alert(`🎯 ${res.data.msg}`); // Backend ka success message show hoga
+          setIsLogin(true); // Account bante hi login screen par bhej dega taake user login kare
+        } else {
+          alert(`⚠️ Alert: ${res.data.msg}`);
+        }
+      } catch (error) {
+        console.error("Direct Register Error Intercepted:", error);
+        const errorMsg = error.response?.data?.msg || error.response?.data?.message || error.message;
+        alert(`❌ Network or Validation Error: ${errorMsg}`);
+      }
     }
   };
 
@@ -73,7 +108,6 @@ function LoginSignup({ setCurrentPage }) {
                 <input type="text" name="name" placeholder="Your Full Name (e.g. Abdullah Khan)" required className="auth-input-heavy" onChange={handleChange} />
               </div>
               
-              {/* FIXED: 11 DIGIT MOBILE VALIDATION CONSTRAINT */}
               <div className="input-icon-wrapper">
                 <FaPhone className="input-side-icon" />
                 <input 
@@ -89,7 +123,6 @@ function LoginSignup({ setCurrentPage }) {
             </>
           )}
           
-          {/* FIXED: type="email" TO VALIDATE AUTOMATIC STRUCTURES FORMAT */}
           <div className="input-icon-wrapper">
             <FaEnvelope className="input-side-icon" />
             <input 
@@ -112,7 +145,6 @@ function LoginSignup({ setCurrentPage }) {
               className="auth-input-heavy" 
               onChange={handleChange} 
             />
-            {/* PRIVACY PASSWORD EYE CONTROLLER LOCK */}
             <span className="eye-toggle-icon-trigger" onClick={() => setShowPassword(!showPassword)} style={{ position: 'absolute', right: '16px', top: '50%', transform: 'translateY(-50%)', cursor: 'pointer', color: '#94a3b8' }}>
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>

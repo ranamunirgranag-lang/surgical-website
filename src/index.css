@@ -1,18 +1,631 @@
-/* Poori Website ka Common Premium Medical Background */
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #e2e8f0 !important; /* Thoda dark premium steel grey tint */
-  background-image: radial-gradient(#cbd5e1 1px, transparent 1px); /* High-tech industrial dot grid pattern */
-  background-size: 20px 20px;
-  overflow-x: hidden;
+/* ==========================================================================
+   ⚙️ APEX COMMAND ADMIN CORE DASHBOARD - LUXURY LIGHT SAAS THEME
+   ========================================================================== */
+
+/* Master Structural Workspace Wrapper */
+.dashboard-container {
+  display: block !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  background-color: #f8fafc !important; /* Premium clean porcelain background canvas */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  -webkit-font-smoothing: antialiased;
 }
 
-main {
+@media (min-width: 768px) {
+  .dashboard-container {
+    padding-left: 280px !important; /* Reserves alignment slot for left sidebar */
+  }
+}
+
+/* Luxury Obsidian Executive Sidebar Rail */
+.dashboard-sidebar {
+  width: 100% !important;
+  background: linear-gradient(180deg, #0f172a 0%, #020617 100%) !important;
+  padding: 32px 24px !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 768px) {
+  .dashboard-sidebar {
+    width: 280px !important;
+    height: 100vh !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    z-index: 999 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.04) !important;
+    box-shadow: 4px 0 24px rgba(15, 23, 42, 0.15) !important;
+  }
+}
+
+.sidebar-title {
+  color: #38bdf8 !important; /* Medical tech active cyan font */
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  margin: 0 0 28px 0 !important;
+  text-transform: uppercase !important;
+}
+
+.sidebar-nav-group {
+  display: flex !important;
+  flex-direction: row !important;
+  overflow-x: auto !important;
+  gap: 10px !important;
+}
+
+@media (min-width: 768px) {
+  .sidebar-nav-group {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+}
+
+.nav-btn {
+  padding: 14px 18px !important;
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #94a3b8 !important;
   background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-.home-container, .about-page-container, .contact-page-container {
-  background: transparent !important; /* Takay index.css ka stylish rang neeche tak nazar aaye */
+@media (min-width: 768px) {
+  .nav-btn { width: 100% !important; white-space: normal !important; }
 }
 
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+}
+
+.nav-btn.active {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important; /* Matte Surgical Crimson */
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.3) !important;
+}
+
+/* Content Canvas Typography Space */
+.dashboard-content {
+  padding: 28px !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 768px) {
+  .dashboard-content { padding: 48px 44px !important; }
+}
+
+.content-title {
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  letter-spacing: -0.02em !important;
+  margin: 0 0 6px 0 !important;
+}
+
+.content-subtitle {
+  font-size: 14px !important;
+  color: #64748b !important;
+  margin: 0 0 36px 0 !important;
+  line-height: 1.5 !important;
+}
+
+/* 👤 SCREENSHOT SLOT: USER BADGES ROW COMPONENT DESIGN */
+.inquiry-meta-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-bottom: 16px !important;
+  width: 100% !important;
+}
+
+.clean-meta-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  box-sizing: border-box !important;
+  border: 1px solid #e2e8f0 !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Distinct high-profile dark badge for user main tag matching layout view */
+.clean-meta-badge.user-badge {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+}
+
+.clean-meta-badge.text-badge {
+  background-color: #ffffff !important;
+  color: #334155 !important;
+}
+
+.clean-meta-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03) !important;
+}
+/* ==========================================================================
+   💬 INQUIRY STREAM CONTAINERS & INSTRUMENTS TILES GRID - PART 2
+   ========================================================================== */
+
+/* Main Inquiry Envelope Card Box */
+.inquiry-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 32px !important;
+  margin-bottom: 28px !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.02), 0 8px 16px -6px rgba(15, 23, 42, 0.01) !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  transition: all 0.3s ease !important;
+}
+
+.inquiry-card:hover {
+  box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.04) !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* 💬 SCREENSHOT SLOT: SOFT AMBIENT MESSAGE BUBBLE CELL */
+.inquiry-message-box {
+  background-color: #f8fafc !important; /* Soft porcelain gray background */
+  border-left: 4px solid #0284c7 !important; /* Tactical tech blue accent bar border */
+  padding: 16px 20px !important;
+  border-radius: 4px 12px 12px 4px !important;
+  font-size: 14.5px !important;
+  color: #0f172a !important; /* Rich obsidian readable font text */
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+  margin: 18px 0 24px 0 !important;
+  font-style: italic !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+/* 📦 TRANSMITTED CHOSEN INSTRUMENTS MATRIX LAYER */
+.products-section {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.products-section-title {
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  color: #475569 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  margin-bottom: 16px !important;
+}
+
+/* Double column template layout parameters grid split */
+.products-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 992px) {
+  .products-grid {
+    grid-template-columns: 1fr 1fr !important; /* Splits perfectly into side-by-side dual boxes */
+  }
+}
+
+/* 🔬 SCREENSHOT SLOT: REFINED WHITE BOX MATRICES WITH SHARP BORDERS */
+.product-item-card {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important; /* Clean light gray outline framing boundaries */
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  transition: all 0.2s ease !important;
+}
+
+.product-item-card:hover {
+  border-color: #0284c7 !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.04) !important;
+}
+
+.product-item-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+
+/* Product square box thumbnail configuration */
+.product-image-box {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 8px !important;
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+
+.product-dashboard-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+.fallback-text-icon {
+  font-size: 18px !important;
+}
+
+.product-item-text {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.product-item-text h5 {
+  margin: 0 !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+}
+
+.product-sku {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* 🟥 VELVET CRIMSON BADGE QUANTITY CHIPS LOOK */
+.product-qty-badge {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #e11d48 !important; /* Crimson dark tag font fill color link */
+  background-color: #fff1f2 !important; /* Soft rose background padding bubble */
+  border: 1px solid #fecdd3 !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  white-space: nowrap !important;
+}
+
+/* 🎛️ ACTION FOOTER LOWER COMMAND CONTROLS AREA */
+.inquiry-card-footer {
+  margin-top: 24px !important;
+  border-top: 1px solid #f1f5f9 !important;
+  padding-top: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Official reply dynamic text status log track logs */
+.reply-success-box {
+  background-color: #f0fdf4 !important; /* Bio emerald soft wash tint layer */
+  border: 1px solid #bbf7d0 !important;
+  color: #16a34a !important;
+  padding: 12px 18px !important;
+  border-radius: 8px !important;
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+}
+
+.reply-success-box strong {
+  font-weight: 700 !important;
+  color: #15803d !important;
+}
+
+/* Matte Solid Crimson execution buttons nodes controllers mapping */
+.btn-reply-trigger {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  padding: 10px 20px !important;
+  border-radius: 8px !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.15) !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.btn-reply-trigger:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(225, 29, 72, 0.25) !important;
+}
+
+/* 👥 REGISTERED USERS GRID MODULE STYLING EXTRA UTILITY */
+.users-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 20px !important;
+  width: 100% !important;
+}
+
+@media (min-width: 768px) {
+  .users-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (min-width: 1200px) {
+  .users-grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
+.user-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+  padding: 24px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01) !important;
+}
+
+.user-name { font-size: 16px !important; font-weight: 700 !important; color: #0f172a !important; margin-bottom: 8px !important; }
+.user-email, .user-license, .user-hospital { font-size: 13.5px !important; color: #475569 !important; margin-bottom: 6px !important; }
+
+.user-card-footer {
+  margin-top: 16px !important;
+  padding-top: 14px !important;
+  border-top: 1px solid #f1f5f9 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.status-badge { font-size: 12px !important; font-weight: 600 !important; color: #16a34a !important; }
+.btn-remove { background: transparent !important; border: none !important; color: #ef4444 !important; font-size: 13px !important; font-weight: 600 !important; cursor: pointer !important; }
+
+/* Global Loading Base Placeholders Layer */
+.loading-state-box {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 240px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  font-size: 15px !important;
+}
+/* ==========================================================================
+   💬 ADMIN INQUIRY REPLY CONTROLS INPUT HUD - PART 1
+   ========================================================================== */
+
+/* Spacing and flexible row layout adjustment for input fields group */
+.reply-input-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: 14px !important;
+  width: 100% !important;
+  max-width: 580px !important; /* Proper desktop alignment boundaries lock */
+  box-sizing: border-box !important;
+}
+
+/* 🛠️ FORCE UPGRADE RAW TEXT BOX TO LUXURY SAAS SYSTEM INPUT */
+.reply-input-group input.reply-input {
+  flex-grow: 1 !important;
+  width: 100% !important;
+  height: 44px !important; /* Uniform desktop execution height matching rows */
+  padding: 0 16px !important;
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  color: #334155 !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+}
+
+.reply-input-group input.reply-input:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1) !important;
+}
+
+/* Custom placeholder font formatting rules layer mapping */
+.reply-input-group input.reply-input::placeholder {
+  color: #94a3b8 !important;
+  font-size: 13.5px !important;
+}
+/* ==========================================================================
+   🎯 ADMIN INQUIRY REPLY CONTROLS SUBMIT BUTTONS - PART 2
+   ========================================================================== */
+
+/* 🟢 FORCED UPGRADE FOR RAW SEND BUTTON TRIGGER */
+.reply-input-group button.btn-send {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important; /* Premium Executive SaaS Blue */
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  padding: 0 20px !important;
+  height: 44px !important; /* Matches perfectly with input container height */
+  min-height: 44px !important;
+  border-radius: 8px !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-sizing: border-box !important;
+}
+
+.reply-input-group button.btn-send:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.25) !important;
+  filter: brightness(1.05) !important;
+}
+
+/* 🔴 FORCED UPGRADE FOR RAW CANCEL BUTTON TRIGGER */
+.reply-input-group button.btn-cancel {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important; /* Sharp minimalist bounding frame */
+  color: #64748b !important; /* Soft executive slate tone */
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  padding: 0 16px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.reply-input-group button.btn-cancel:hover {
+  background-color: #f8fafc !important; /* Gentle ambient gray tint shift */
+  color: #0f172a !important; /* Snaps slate text into dark obsidian */
+  border-color: #94a3b8 !important;
+}
+/* ==========================================================================
+   👥 RANA APEX SURGICAL - REGISTERED CLIENTS CRM DESIGN (PART 1)
+   ========================================================================== */
+
+/* 1. Dynamic Layout Grid Configurations */
+.users-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 24px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 768px) {
+  .users-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* Perfect dual-columns balance on tablets */
+  }
+}
+
+@media (min-width: 1200px) {
+  .users-grid {
+    grid-template-columns: repeat(3, 1fr) !important; /* Premium 3-cards alignment matching screens layout */
+  }
+}
+
+/* 2. Sleek Floating White Box Card Structures */
+.user-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important; /* Smooth rounded curves */
+  padding: 24px !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.02), 0 8px 16px -6px rgba(15, 23, 42, 0.01) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important; /* Unified vertical spacing internal flow entries */
+  position: relative !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.user-card:hover {
+  transform: translateY(-4px) !important; /* Soft interactive float lift on hover */
+  box-shadow: 0 20px 30px -10px rgba(217, 119, 6, 0.08) !important; /* Golden ambient glow highlight */
+  border-color: #f59e0b !important; /* Clean orange accent stroke boundary definition */
+}
+
+/* 3. Bold Client Name & Data Fields Hierarchy Styling */
+.user-name {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important; /* Dark obsidian title text */
+  letter-spacing: -0.01em !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  padding-bottom: 10px !important;
+  margin-bottom: 2px !important;
+}
+
+.user-email, 
+.user-license, 
+.user-hospital {
+  font-size: 13.5px !important;
+  color: #475569 !important; /* Muted corporate blue-grey fonts */
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  line-height: 1.4 !important;
+}
+/* ==========================================================================
+   ⚙️ CRM COMPONENT ACTION CONTROLS & GOLDEN SUB-SYSTEM BUTTONS - PART 2
+   ========================================================================== */
+
+/* 4. Card Lower Footer Action Alignment Row */
+.user-card-footer {
+  margin-top: auto !important; /* Pushes the button array clean to the very bottom boundary */
+  padding-top: 16px !important;
+  border-top: 1px solid #f1f5f9 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  gap: 12px !important;
+}
+
+/* 🟢 SCREENSHOT SLOT: SLEEK BRIGHT LIGHT GREEN ACTIVE CLIENT BADGE */
+.status-badge {
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  color: #16a34a !important; /* Crisp emerald solid font text */
+  background-color: #f0fdf4 !important; /* Soft bio-clean emerald mint tint wash background */
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  border: 1px solid #bbf7d0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+}
+
+
+/* 🗑️ SCREENSHOT SLOT: MINIMALIST GREY CARD REMOVE TRASH TRIGGER */
+.btn-remove {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important; /* Soft dustbin bounding wireframe border */
+  color: #64748b !important; /* High-end slate corporate tone text font */
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  padding: 0 14px !important;
+  height: 36px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+}
+
+.btn-remove:hover {
+  background-color: #fff1f2 !important; /* Warning rose red soft wash trigger on hovering */
+  color: #e11d48 !important; /* Snaps slate text to high-contrast execution crimson red */
+  border-color: #fecdd3 !important;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.05) !important;
+}

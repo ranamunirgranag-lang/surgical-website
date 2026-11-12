@@ -3,44 +3,44 @@
    ========================================================================== */
 
 .contact-page-container {
-  padding: 0 !important; /* Saari side ki space aur padding khatam */
+  padding: 0 !important;
   margin: 0 !important;
   width: 100vw;
-  min-height: calc(100vh - 70px); /* Navbar ke niche poori screen cover kare ga */
+  min-height: calc(100vh - 70px);
   box-sizing: border-box;
-  background: #ffffff; /* Default overall grid baseline */
+  background: #ffffff;
 }
 
-/* 🏢 MAIN DYNAMIC SPLIT SPLIT GRID - CORNER TO CORNER NO BOX DISPLAY */
+/* 🏢 MAIN DYNAMIC SPLIT GRID - CORNER TO CORNER NO BOX DISPLAY */
 .contact-premium-split-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Screen Divided into 2 absolute equal blocks */
-  width: 100vw; /* Full edge to edge screen alignment width */
+  grid-template-columns: 1fr 1fr;
+  width: 100vw;
   min-height: calc(100vh - 70px);
   margin: 0 !important;
   padding: 0 !important;
-  border-radius: 0 !important; /* Dabba style corners completely layout level rounded flat */
-  box-shadow: none !important; /* Separation dabba lines removed */
+  border-radius: 0 !important;
+  box-shadow: none !important;
   border: none !important;
   box-sizing: border-box;
 }
 
 /* 🟦 LEFT BLOCK: FULL EDGE-TO-EDGE BLUE GRADIENT BRANDING PANEL */
 .hq-info-panel-card {
-  background: linear-gradient(135deg, #0284c7, #0f172a); /* Royal Medical Blue to Deep Slate */
-  padding: 60px 8%; /* Left edge padding optimized like sir's portal */
+  background: linear-gradient(135deg, #0284c7, #0f172a);
+  padding: 60px 8%;
   color: #ffffff !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 35px;
-  border-radius: 0 !important; /* Zero roundness border grid edge connection */
+  border-radius: 0 !important;
   margin: 0 !important;
   box-sizing: border-box;
 }
 
 .hq-info-panel-card h3 {
-  font-size: 32px; /* Bigger hero-text title sizing */
+  font-size: 32px;
   font-weight: 850;
   color: #ffffff;
   margin: 0;
@@ -98,10 +98,26 @@
   margin: 0;
 }
 
+/* 🛒 SELECTED INSTRUMENTS BUCKET PANEL */
+.live-bucket-section h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.bucket-items-scroll-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bucket-items-scroll-box::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
 /* ⬜ RIGHT BLOCK: FULL SCREEN PURE WHITE FORM INTERFACE PANEL */
 .form-workspace-card {
   background: #ffffff;
-  padding: 60px 10%; /* Right corner spacing adjustments perfectly mirrored */
+  padding: 60px 10%;
   border-radius: 0 !important;
   margin: 0 !important;
   display: flex;
@@ -115,7 +131,7 @@
   font-weight: 850;
   color: #0f172a;
   margin: 0 0 8px 0;
-  border-left: 5px solid #0284c7; /* Brand vertical accent tracker mark bar */
+  border-left: 5px solid #0284c7;
   padding-left: 16px;
   letter-spacing: -0.5px;
   text-transform: uppercase;
@@ -129,51 +145,57 @@
   padding-left: 21px;
 }
 
-/* Form inputs matrix rows controls */
+/* Form inputs matrix rows controls matching Contact.jsx structure */
 .premium-executive-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
-.form-input-split-row {
+/* Horizontal grid for two fields side-by-side */
+.input-group-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-.executive-input-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.executive-input-field label {
-  font-size: 14px;
-  font-weight: 700;
-  color: #475569;
-}
-
-.executive-input-field input, .executive-input-field textarea {
-  background: #f8fafc; /* Crisp clean gray input panels */
+/* Inputs, Textareas styles injection layer */
+.premium-executive-form input,
+.premium-executive-form textarea {
+  background: #f8fafc;
   border: 1px solid #cbd5e1;
   padding: 14px 16px;
   border-radius: 8px;
   font-size: 14.5px;
   color: #0f172a;
   outline: none;
+  width: 100%;
+  box-sizing: border-box;
   transition: all 0.25s ease;
 }
 
-.executive-input-field input:focus, .executive-input-field textarea:focus {
+.premium-executive-form input:focus,
+.premium-executive-form textarea:focus {
   border-color: #0284c7;
   background: #ffffff;
   box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
 }
 
+/* Full Width Fields Sizing Override */
+.full-width-input {
+  width: 100% !important;
+}
+
+.full-width-textarea {
+  width: 100% !important;
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
 /* Sharp Bold Transmit Button Dashboard element */
-.btn-executive-submit {
-  background: #0f172a; /* Heavy solid black brand layout button button link */
+.submit-rfq-button {
+  background: #0f172a;
   color: #ffffff;
   border: none;
   padding: 16px;
@@ -192,16 +214,16 @@
   box-shadow: 0 4px 15px rgba(15, 23, 42, 0.12);
 }
 
-.btn-executive-submit:hover {
+.submit-rfq-button:hover {
   background: #1e293b;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(15, 23, 42, 0.2);
 }
 
-/* 📱 EXECUTIVE FULL RESPONSIBILITY OVERRIDES FOR MOBILE FLUID ACCENT */
+/* 📱 EXECUTIVE RESPONSIVE OVERRIDES FOR MOBILE */
 @media (max-width: 992px) {
   .contact-premium-split-grid {
-    grid-template-columns: 1fr; /* Stack columns vertically for responsiveness */
+    grid-template-columns: 1fr;
     min-height: auto;
   }
   
@@ -211,7 +233,8 @@
 }
 
 @media (max-width: 576px) {
-  .form-input-split-row {
+  .input-group-row {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 }

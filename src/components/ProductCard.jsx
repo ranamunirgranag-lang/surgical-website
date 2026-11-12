@@ -3,8 +3,6 @@ import { FaCartPlus, FaCheckCircle, FaHashtag } from 'react-icons/fa';
 import '../styles/ProductCard.css';
 
 const ProductCard = ({ product, addToInquiry, isAdded }) => {
-  const displayPrice = (product.id * 1250 + 450);
-
   return (
     <div className="product-card-modern">
       <div className="prod-img-container">
@@ -24,16 +22,16 @@ const ProductCard = ({ product, addToInquiry, isAdded }) => {
         <h3 className="prod-title-heavy">{product.name}</h3>
         <p className="prod-desc-text">{product.description}</p>
         
+        {/* Price tag hata kar B2B Request Quote badge laga diya hai */}
         <div className="premium-price-tag">
-          <span className="price-label">Wholesale Rate </span>
-          <span className="price-amount">Rs. {displayPrice.toLocaleString()}</span>
+          <span className="price-label">Export Grade: </span>
+          <span className="price-amount" style={{ fontSize: '13px', color: '#0284c7' }}>Price on Request (RFQ)</span>
         </div>
 
-        {/* FIXED: Ab button dabne par direct item add hoga aur page change nahi hoga! */}
         <button 
           className={`btn-add-inquiry ${isAdded ? 'already-added' : ''}`}
           onClick={(e) => {
-            e.stopPropagation(); // Taake event bubble na ho
+            e.stopPropagation();
             addToInquiry(product);
           }}
           disabled={isAdded}

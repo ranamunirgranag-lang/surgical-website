@@ -1,249 +1,382 @@
+/* ==========================================================================
+   ✨ RANA APEX SURGICAL - ULTRA LUXURY MODERN ABOUT CANVAS
+   ========================================================================== */
+
+/* Main Canvas Wrapper */
 .about-page-container {
-  padding: 40px 0;
-  width: 100vw;
-  box-sizing: border-box;
-  background: transparent !important;
+  width: 100%;
   min-height: 100vh;
+  background-color: #f8fafc; /* Professional smooth porcelain background */
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  color: #0f172a;
   overflow-x: hidden;
+  box-sizing: border-box;
+  padding-bottom: 80px; /* Fixing short page issue */
 }
 
-/* Epic Hero Banner */
+/* 1. Epic Hero Section with Soft Cinematic Overlay */
 .about-header-banner-premium {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.85)), 
-              url('https://unsplash.com') no-repeat center/cover;
-  padding: 80px 5%;
-  text-align: center;
-  color: white;
-  margin-bottom: 50px;
   width: 100%;
+  min-height: 480px; /* Increased vertical volume */
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.8) 100%),
+              url('/surgical-bg.jpg') center/cover no-repeat; /* Fallback for your image path */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
   box-sizing: border-box;
+  position: relative;
+  box-shadow: inset 0 -40px 80px #f8fafc;
 }
 
 .banner-glass-overlay {
   max-width: 800px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  padding: 35px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  animation: premiumSlideUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .about-subtitle-tech {
-  color: #38bdf8;
-  font-size: 11px;
+  color: #38bdf8; /* Medical Tech Cyan */
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 3px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   display: inline-block;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
-.about-header-banner-premium h2 {
+.banner-glass-overlay h2 {
   font-size: 38px;
-  font-weight: 900;
-  margin: 0 0 15px 0;
+  font-weight: 800;
+  color: #ffffff;
   line-height: 1.2;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
 }
 
-.about-header-banner-premium p {
-  font-size: 15.5px;
-  color: #cbd5e1;
-  line-height: 1.6;
+@media (min-width: 768px) {
+  .banner-glass-overlay h2 { font-size: 48px; }
+}
+
+.text-highlight-blue-title {
+  color: #e11d48; /* Velvet Surgical Crimson Accent */
+}
+
+.banner-glass-overlay p {
+  font-size: 16px;
+  color: #94a3b8;
+  line-height: 1.7;
   margin: 0;
 }
 
-/* Dual Pillars */
+@media (min-width: 768px) {
+  .banner-glass-overlay p { font-size: 18px; }
+}
+
+/* 2. Dual Pillars Grid System */
 .about-pillars-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
   max-width: 1200px;
-  margin: 0 auto 60px auto;
-  padding: 0 20px;
-  box-sizing: border-box;
+  margin: -60px auto 80px auto; /* Floating card effect */
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .about-pillars-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .pillar-modern-card {
-  padding: 35px;
-  border-radius: 16px;
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.03);
-}
-
-.mandate-blue {
-  background: linear-gradient(135deg, #0284c7, #0369a1);
-  color: white;
-}
-
-.quality-slate {
   background: #ffffff;
-  color: #0f172a;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  gap: 24px;
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.04), 0 10px 10px -5px rgba(15, 23, 42, 0.02);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: premiumSlideUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
+  transition: all 0.3s ease;
+}
+
+.pillar-modern-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 40px -10px rgba(15, 23, 42, 0.08);
+}
+
+.mandate-blue:hover {
+  border-color: rgba(14, 165, 233, 0.3);
+}
+
+.quality-slate:hover {
+  border-color: rgba(225, 29, 72, 0.3);
 }
 
 .pillar-icon-box {
-  font-size: 30px;
-  padding: 14px;
-  border-radius: 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
 }
 
 .mandate-blue .pillar-icon-box {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.quality-slate .pillar-icon-box {
   background: #f0f9ff;
   color: #0284c7;
 }
 
+.quality-slate .pillar-icon-box {
+  background: #fff5f5;
+  color: #e11d48;
+}
+
 .pillar-text-content h3 {
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
   margin: 0 0 10px 0;
 }
 
 .pillar-text-content p {
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.6;
   margin: 0;
 }
-
-.quality-slate .pillar-text-content p {
-  color: #475569;
-}
-
-/* Process Workflow Section */
+/* 3. ADVANCED INDUSTRIAL PROCESS WORKFLOW */
 .about-detailed-workflow {
   max-width: 1200px;
-  margin: 0 auto 60px auto;
-  padding: 0 20px;
-  width: 100%;
+  margin: 0 auto;
+  padding: 40px 24px;
   box-sizing: border-box;
 }
 
 .section-title-centered-premium {
   text-align: center;
-  max-width: 600px;
-  margin: 0 auto 35px auto;
+  margin-bottom: 56px;
 }
 
 .section-title-centered-premium h2 {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 800;
   color: #0f172a;
-  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px 0;
 }
 
 .section-title-centered-premium p {
+  font-size: 15px;
   color: #64748b;
-  font-size: 14.5px;
+  margin: 0;
 }
 
+/* 3-Stage Symmetric Grid Layout */
 .workflow-timeline-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .workflow-timeline-grid {
+    grid-template-columns: repeat(3, 1fr); /* Clean horizontal layout across wide viewports */
+  }
 }
 
 .workflow-card-premium {
-  background: white;
-  padding: 30px 20px;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 20px;
+  padding: 40px 32px;
   position: relative;
-  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02);
-  transition: all 0.3s ease;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: premiumSlideUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.02);
 }
 
+/* Dynamic Animation Delay Triggers for Cascading Flow Effect */
+.workflow-timeline-grid .workflow-card-premium:nth-child(1) { animation-delay: 0.3s; }
+.workflow-timeline-grid .workflow-card-premium:nth-child(2) { animation-delay: 0.5s; }
+.workflow-timeline-grid .workflow-card-premium:nth-child(3) { animation-delay: 0.7s; }
+
 .workflow-card-premium:hover {
-  transform: translateY(-5px);
-  border-color: #0284c7;
-  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.06);
+  transform: translateY(-6px);
+  border-color: rgba(2, 132, 199, 0.25);
+  box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.06), 0 10px 20px -8px rgba(15, 23, 42, 0.04);
 }
 
 .workflow-badge {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 9px;
+  top: 24px;
+  right: 28px;
+  font-size: 11px;
   font-weight: 800;
-  background: #f1f5f9;
-  color: #64748b;
-  padding: 3px 6px;
-  border-radius: 4px;
+  color: #94a3b8;
+  background: #f8fafc;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  border: 1px solid #e2e8f0;
 }
 
 .w-icon-box {
-  background: #f0f9ff;
-  color: #0284c7;
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #334155;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 22px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.workflow-card-premium:hover .w-icon-box {
+  background: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
 }
 
 .workflow-card-premium h3 {
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 700;
   color: #0f172a;
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
+}
+
+.workflow-card-premium h3 .text-highlight {
+  color: #0284c7; /* Brand Blue Forging Node highlights */
 }
 
 .workflow-card-premium p {
-  color: #64748b;
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
   margin: 0;
 }
 
-/* ⚡ Highlights, Text Colors & Scroll Animations Setup */
-@keyframes smoothFadeUp {
+/* ==========================================================================
+   🌀 VANILLA PURE BROWSER ANIMATION KEYFRAMES (NO GSAP DEPENDENCY)
+   ========================================================================== */
+/* ==========================================================================
+   🌀 DYNAMIC SMOOTH SCROLL ENHANCED ANIMATION ENGINE
+   ========================================================================== */
+
+/* Base setup for animated elements to prevent flashing before load */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+  animation: smoothSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 💎 Dynamic Cascading Delay Blocks for Cards Layout Flow */
+/* Hero Title Block */
+.banner-glass-overlay {
+  animation-delay: 0.1s;
+}
+
+/* Mission & Steel Pillars Row */
+.about-pillars-grid .pillar-modern-card:nth-child(1) { animation-delay: 0.3s; }
+.about-pillars-grid .pillar-modern-card:nth-child(2) { animation-delay: 0.45s; }
+
+/* Mid Page Corporate Statistics Row */
+.stats-inner-max-width .stat-metric-box:nth-child(1) { animation-delay: 0.5s; }
+.stats-inner-max-width .stat-metric-box:nth-child(2) { animation-delay: 0.65s; }
+.stats-inner-max-width .stat-metric-box:nth-child(3) { animation-delay: 0.8s; }
+
+/* Lower Forging System Stages Pipeline */
+.workflow-timeline-grid .workflow-card-premium:nth-child(1) { animation-delay: 0.6s; }
+.workflow-timeline-grid .workflow-card-premium:nth-child(2) { animation-delay: 0.8s; }
+.workflow-timeline-grid .workflow-card-premium:nth-child(3) { animation-delay: 1s; }
+
+/* 🧠 High-End Smooth Physics Keyframe Curve */
+@keyframes smoothSlideUp {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(50px) scale(0.98); /* Added tiny structural scaling for upscale vibe */
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-.text-highlight {
-  color: #0284c7;
-  font-weight: 700;
-}
 
-.text-highlight-blue-title {
-  color: #38bdf8;
-  font-weight: 800;
-}
-
+/* CSS Global Class Bindings for Layout Structural Triggers */
 .animate-fade-up {
-  animation: smoothFadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  will-change: transform, opacity;
+}
+/* 🏢 NEW STATS SECTION UTILITY STYLING */
+.about-stats-corporate-section {
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 60px 24px;
+  box-sizing: border-box;
+  margin: 40px 0 60px 0;
 }
 
-/* Entry Delays */
-.about-header-banner-premium { animation-delay: 0.05s; }
-.about-pillars-grid .pillar-modern-card:nth-child(1) { animation-delay: 0.1s; }
-.about-pillars-grid .pillar-modern-card:nth-child(2) { animation-delay: 0.15s; }
-.workflow-timeline-grid .workflow-card-premium:nth-child(1) { animation-delay: 0.2s; }
-.workflow-timeline-grid .workflow-card-premium:nth-child(2) { animation-delay: 0.25s; }
-.workflow-timeline-grid .workflow-card-premium:nth-child(3) { animation-delay: 0.3s; }
+.stats-inner-max-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  text-align: center;
+}
 
-/* Responsive adjustments */
-@media (max-width: 992px) {
-  .about-pillars-grid, .workflow-timeline-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+@media (min-width: 768px) {
+  .stats-inner-max-width {
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.stat-metric-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-icon-wrapper {
+  font-size: 28px;
+  color: #0284c7;
+  margin-bottom: 4px;
+}
+
+.stat-metric-box h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.stat-metric-box p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 280px;
 }

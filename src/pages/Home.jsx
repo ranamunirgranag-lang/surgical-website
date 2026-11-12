@@ -90,20 +90,25 @@ const Home = ({ setCurrentPage }) => {
         <div className="lab-split-grid">
           
           {/* Left Visual Pillar: Video Tour Overlay Canvas */}
-          <div className="lab-video-canvas">
-            <img 
-              src="" 
-              alt="Rana Apex Advanced Production Facility" 
-              className="lab-main-visual"
-            />
-            <div className="pulse-play-layer">
-              <div className="play-button-ring"></div>
-              <span className="play-icon-medical">🩺</span>
-            </div>
-            <div className="floating-badge-production">
-              <span className="live-dot-pulse"></span> Sialkot Factory Live Operations
-            </div>
-          </div>
+         <div className="lab-video-canvas">
+
+  <video
+    src="surgicalvideo.mp4"
+    className="lab-main-visual"
+    autoPlay
+    muted
+    loop
+    playsInline
+  ></video>
+
+ 
+
+  <div className="floating-badge-production">
+    <span className="live-dot-pulse"></span>
+    Supporting Global Operation Theaters
+  </div>
+
+</div>
 
           {/* Right Metrics Pillar: Technical Specifications Typewriter List */}
           <div className="lab-technical-specs">
