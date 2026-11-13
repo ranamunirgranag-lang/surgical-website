@@ -13,7 +13,7 @@ const Navbar = ({ currentPage, setCurrentPage, inquiryCount }) => {
   const userPic = localStorage.getItem('userPic'); // Admin image selector layer
 
   // Live Dynamic URL Config Configuration
- const BACKEND_API_URL = import.meta.env.VITE_API_URL || 'https://surgical-backend.vercel.app';
+ const BACKEND_API_URL ='https://surgical-backend.vercel.app/api';
 
   // 📡 DATABASE LIVE CONFIGURATION
   useEffect(() => {
