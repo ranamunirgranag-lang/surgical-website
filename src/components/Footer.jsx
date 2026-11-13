@@ -25,8 +25,8 @@ const Footer = ({ setCurrentPage }) => {
     const companyEmail = "ranaapexsurgical640@gmail.com";
     const subject = encodeURIComponent("Surgical Inquiry - Rana Apex Surgical");
     const body = encodeURIComponent(quickMessage);
-    
     const gmailUrl = `https://google.com{companyEmail}&su=${subject}&body=${body}`;
+
     window.open(gmailUrl, '_blank');
     setQuickMessage('');
   };
@@ -107,7 +107,8 @@ const Footer = ({ setCurrentPage }) => {
             <li>
               <div className="icon-circle"><FaEnvelope /></div>
               <a 
-                href="https://google.com" 
+              href="https://google.com"
+
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="footer-email-link"
