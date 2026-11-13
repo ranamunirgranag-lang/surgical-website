@@ -16,20 +16,19 @@ const Footer = ({ setCurrentPage }) => {
   };
 
   // 📧 DIRECT GMAIL WEB LAUNCHER: Browser mein seedha Gmail kholega
-  const handleSendDirectEmail = (e) => {
+   const handleSendDirectEmail = (e) => {
     e.preventDefault();
     if (!quickMessage.trim()) {
       alert("Please type a short message first!");
       return;
     }
-    const companyEmail = "ranaapexsurgical640@gmail.com";
     const subject = encodeURIComponent("Surgical Inquiry - Rana Apex Surgical");
     const body = encodeURIComponent(quickMessage);
-    const gmailUrl = `https://google.com{companyEmail}&su=${subject}&body=${body}`;
-
-    window.open(gmailUrl, '_blank');
+    
+    window.location.href = `mailto:ranaapexsurgical640@://gmail.com{subject}&body=${body}`;
     setQuickMessage('');
   };
+
 
   return (
     <footer className="modern-footer">
