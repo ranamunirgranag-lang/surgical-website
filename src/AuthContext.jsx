@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 
-// 🌐 LIVE RAILWAY BACKEND
-const API_URL = 'https://surgical-backend-production.up.railway.app';
+// ✅ LIVE VERCEL BACKEND CONNECTED
+const API_URL = 'https://vercel.app';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
