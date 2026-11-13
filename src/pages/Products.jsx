@@ -23,7 +23,8 @@ const Products = ({ addToInquiry, inquiryCart, setCurrentPage }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
   const [dbProducts, setDbProducts] = useState([]);
-  const BACKEND_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const BACKEND_API_URL = import.meta.env.VITE_API_URL || 'https://vercel.app
+/api';
 
   useEffect(() => {
     const fetchNewItems = async () => {
