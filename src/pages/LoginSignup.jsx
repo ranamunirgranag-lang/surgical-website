@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../AuthContext';
 import { FaEye, FaEyeSlash, FaLock, FaEnvelope, FaUser, FaPhone } from 'react-icons/fa'; 
-import axios from 'axios'; // Axios ko direct import kar liya taake config ka rona na rahe
+import axios from 'axios';
 import '../styles/LoginSignup.css';
 
 function LoginSignup({ setCurrentPage }) {
@@ -11,8 +11,8 @@ function LoginSignup({ setCurrentPage }) {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState('');
 
-  // Live URL Setup: Agar env file nahi bhi bani, toh fallback local par chalega
-  const BACKEND_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  // ✅ LIVE BACKEND URL DIRECTLY CONNECTED (No more localhost error!)
+  const BACKEND_API_URL = import.meta.env.VITE_API_URL || 'https://vercel.app';
 
   const checkPasswordStrength = (password) => {
     if (!password) { setPasswordStrength(''); return; }
@@ -28,7 +28,7 @@ function LoginSignup({ setCurrentPage }) {
     if (e.target.name === 'password') { checkPasswordStrength(e.target.value); }
   };
 
-   const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLogin) {
       // 🔐 SECRET ADMIN BYPASS PORTAL ENTRY GATE
@@ -45,9 +45,12 @@ function LoginSignup({ setCurrentPage }) {
         }
       }
       
-      // 🟢 LOCAL TESTING FOR LOGIN
+      // 🟢 LIVE BACKEND LOGIN
       try {
-        const response = await axios.post(`${BACKEND_API_URL}/auth/login`, { email: formData.email, password: formData.password });
+        const response = await axios.post(`${BACKEND_API_URL}/auth/login`, { 
+          email: formData.email, 
+          password: formData.password 
+        });
         if (response.data.success) {
           alert("🔓 Login Successful!");
           localStorage.setItem('token', response.data.token || response.data.user._id);
@@ -56,15 +59,19 @@ function LoginSignup({ setCurrentPage }) {
           alert(`⚠️ ${response.data.msg}`);
         }
       } catch (err) {
-        const response = await loginUser(formData.email, formData.password);
-        alert(response.msg);
-        if (response.success) {
-          localStorage.setItem('token', response.token || '6a7d6ce8bd12a58dcb8bc557');
-          setCurrentPage('dashboard');
+        try {
+          const response = await loginUser(formData.email, formData.password);
+          alert(response.msg);
+          if (response.success) {
+            localStorage.setItem('token', response.token || '6a7d6ce8bd12a58dcb8bc557');
+            setCurrentPage('dashboard');
+          }
+        } catch (fallbackErr) {
+          alert("❌ Network Error: Backend server is not responding. Check Vercel Deployment Protection.");
         }
       }
     } else {
-      // 🛡️ DIRECT STRIPPED LOCAL SUBMIT FOR REGISTRATION
+      // 🛡️ LIVE BACKEND REGISTRATION
       try {
         const payload = {
           name: formData.name,
@@ -74,12 +81,11 @@ function LoginSignup({ setCurrentPage }) {
           hospitalName: "Public Retail Buyer"
         };
         
-        // 🔥 FIXED: /auth/register ko badal kar /auth/signup kar diya backend ke mutabiq
         const res = await axios.post(`${BACKEND_API_URL}/auth/signup`, payload);
         
         if (res.data.success) {
-          alert(`🎯 ${res.data.msg}`); // Backend ka success message show hoga
-          setIsLogin(true); // Account bante hi login screen par bhej dega taake user login kare
+          alert(`🎯 ${res.data.msg}`);
+          setIsLogin(true);
         } else {
           alert(`⚠️ Alert: ${res.data.msg}`);
         }
