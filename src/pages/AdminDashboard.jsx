@@ -29,7 +29,7 @@ function AdminDashboard() {
   const [editPrices, setEditPrices] = useState({});
 
   // Live Dynamic URL Config Configuration
-  const BACKEND_API_URL = 'https://vercel.app';
+  const BACKEND_API_URL = 'https://surgical-backend.vercel.app';
 
 
   const loadDashboardData = async () => {
@@ -414,7 +414,7 @@ function AdminDashboard() {
                               onClick={async () => {
                                 if (window.confirm(`Are you sure you want to permanently delete ${prod.name} from the catalog?`)) {
                                   try {
-    const BACKEND_API_URL = 'https://vercel.app';
+    const BACKEND_API_URL = 'https://surgical-backend.vercel.app';
                         
                                     const res = await axios.delete(`${BACKEND_API_URL}/auth/delete/${prod._id}`);
                                     

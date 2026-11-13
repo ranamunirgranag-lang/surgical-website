@@ -23,7 +23,7 @@ const Products = ({ addToInquiry, inquiryCart, setCurrentPage }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
   const [dbProducts, setDbProducts] = useState([]);
- const BACKEND_API_URL = 'https://vercel.app';
+ const BACKEND_API_URL = 'https://surgical-backend.vercel.app';
 
 
   useEffect(() => {

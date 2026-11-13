@@ -4,7 +4,7 @@ import axios from 'axios';
 const AuthContext = createContext();
 
 // ✅ LIVE VERCEL BACKEND CONNECTED
-const API_URL = 'https://vercel.app';
+const API_URL = 'https://surgical-backend.vercel.app';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

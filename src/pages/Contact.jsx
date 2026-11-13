@@ -9,7 +9,7 @@ const Contact = ({ inquiryCart = [], setInquiryCart }) => {
   const userId = localStorage.getItem('token');
 
   // Live URL Configuration Layout
-  const BACKEND_API_URL = 'https://vercel.app';
+  const BACKEND_API_URL = 'https://surgical-backend.vercel.app';
 
 
   // 📡 DATABASE SE ACTIVE USER DETAILS FETCH KARKE FORM AUTO-FILL KRNY K LIYE
