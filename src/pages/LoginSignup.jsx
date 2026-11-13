@@ -12,7 +12,7 @@ function LoginSignup({ setCurrentPage }) {
   const [passwordStrength, setPasswordStrength] = useState('');
 
   // ✅ LIVE BACKEND URL DIRECTLY CONNECTED (No more localhost error!)
-  const BACKEND_API_URL ='https://surgical-backend.vercel.app';
+  const BACKEND_API_URL ='https://surgical-backend.vercel.app/api';
 
   const checkPasswordStrength = (password) => {
     if (!password) { setPasswordStrength(''); return; }
