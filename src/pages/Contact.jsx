@@ -9,8 +9,8 @@ const Contact = ({ inquiryCart = [], setInquiryCart }) => {
   const userId = localStorage.getItem('token');
 
   // Live URL Configuration Layout
-  const BACKEND_API_URL = import.meta.env.VITE_API_URL || 'https://vercel.app
-/api';
+  const BACKEND_API_URL = 'https://vercel.app';
+
 
   // 📡 DATABASE SE ACTIVE USER DETAILS FETCH KARKE FORM AUTO-FILL KRNY K LIYE
   useEffect(() => {
