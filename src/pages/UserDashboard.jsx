@@ -27,7 +27,7 @@ export default function UserDashboard() {
   const userId = localStorage.getItem('token'); 
   
   // Dynamic Environment Configuration (Localhost aur Live hosting dono handle karega)
- const BACKEND_API_URL = 'https://surgical-backend.vercel.app';
+ const BACKEND_API_URL = 'https://surgical-backend.vercel.app/api';
 
 
     useEffect(() => {
@@ -1020,7 +1020,7 @@ export default function UserDashboard() {
             onClick={async () => {
               if (window.confirm("Are you sure you want to cancel this international surgical instrument inquiry?")) {
                 try {
-                  const res = await axios.delete(`${BACKEND_API_URL || 'https://surgical-backend.vercel.app'}/auth/inquiry/delete/${order._id}`);
+                  const res = await axios.delete(`${BACKEND_API_URL || 'https://surgical-backend.vercel.app/api'}/auth/inquiry/delete/${order._id}`);
                   if (res.data.success) {
                     alert("🎯 Success: Inquiry entry removed!");
                     setOrders(orders.filter(item => item._id !== order._id));
