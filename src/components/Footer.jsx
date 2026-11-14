@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaCertificate, FaShieldAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaPaperPlane } from 'react-icons/fa';
+import React from 'react';
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaCertificate, FaShieldAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import '../styles/Footer.css';
 
 const Footer = ({ setCurrentPage }) => {
-  const [quickMessage, setQuickMessage] = useState('');
-
   const handleNavClick = (pageName, e) => {
     if (setCurrentPage) {
       e.preventDefault();
@@ -15,7 +13,6 @@ const Footer = ({ setCurrentPage }) => {
     }
   };
 
-  // Upar wale email link par click karne ke liye
   const openGmailTab = (e) => {
     e.preventDefault();
     const url = "https://" + "://google.com" + "/mail/?view=cm&fs=1&to=ranaapexsurgical640@gmail.com";
@@ -82,7 +79,7 @@ const Footer = ({ setCurrentPage }) => {
           </ul>
         </div>
 
-        {/* Corporate Headquarters + Direct Gmail Form Box */}
+        {/* Corporate Headquarters */}
         <div className="footer-contact-column">
           <h4>Corporate Headquarters</h4>
           <ul className="footer-contact-list">
@@ -106,69 +103,6 @@ const Footer = ({ setCurrentPage }) => {
               </a>
             </li>
           </ul>
-
-          {/* INSTANT DIRECT MESSAGE BOX */}
-          <form 
-            action="https://formsubmit.co" 
-            method="POST"
-            target="_blank"
-            style={{
-              marginTop: '16px',
-              background: 'rgba(255, 255, 255, 0.06)',
-              padding: '12px',
-              borderRadius: '10px',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '8px'
-            }}
-          >
-            <input type="hidden" name="_subject" value="New Quick Inquiry - Rana Apex Surgical Website" />
-            <input type="hidden" name="_captcha" value="false" />
-            <span style={{ fontSize: '11px', fontWeight: '700', color: '#38bdf8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-              ✉️ Quick Direct Message
-            </span>
-            <textarea
-              name="message"
-              required
-              placeholder="Write your quick inquiry here..."
-              value={quickMessage}
-              onChange={(e) => setQuickMessage(e.target.value)}
-              rows="2"
-              style={{
-                width: '100%',
-                padding: '8px 10px',
-                borderRadius: '6px',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                background: 'rgba(15, 23, 42, 0.7)',
-                color: '#ffffff',
-                fontSize: '12px',
-                resize: 'none',
-                outline: 'none',
-                boxSizing: 'border-box'
-              }}
-            />
-            <button
-              type="submit"
-              style={{
-                background: 'linear-gradient(135deg, #0284c7, #2563eb)',
-                color: '#ffffff',
-                border: 'none',
-                padding: '8px 12px',
-                borderRadius: '6px',
-                fontSize: '12px',
-                fontWeight: '700',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                transition: '0.2s'
-              }}
-            >
-              <FaPaperPlane /> Send Direct Message
-            </button>
-          </form>
         </div>
       </div>
 
