@@ -4,7 +4,6 @@ import '../styles/Footer.css';
 
 const Footer = ({ setCurrentPage }) => {
   const [quickMessage, setQuickMessage] = useState('');
-  const [sending, setSending] = useState(false);
 
   const handleNavClick = (pageName, e) => {
     if (setCurrentPage) {
@@ -13,42 +12,6 @@ const Footer = ({ setCurrentPage }) => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
-  // ✅ SEEDHA WEBSITE SE EMAIL BHEJNE WALA SYSTEM (Bina kisi external app ke!)
-  const handleSendDirectEmail = async (e) => {
-    e.preventDefault();
-    const msgText = quickMessage.trim();
-    if (!msgText) {
-      alert("Please type a short message first!");
-      return;
-    }
-
-    setSending(true);
-    try {
-      const response = await fetch("https://formsubmit.co", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          _subject: "New Quick Inquiry - Rana Apex Surgical Website",
-          message: msgText
-        })
-      });
-
-      if (response.ok) {
-        alert("✅ Message Sent! Your inquiry has been delivered directly to Rana Apex Surgical.");
-        setQuickMessage('');
-      } else {
-        alert("⚠️ Could not send message right now. Please try again.");
-      }
-    } catch (error) {
-      alert("❌ Network error while sending message.");
-    } finally {
-      setSending(false);
     }
   };
 
@@ -119,7 +82,7 @@ const Footer = ({ setCurrentPage }) => {
           </ul>
         </div>
 
-        {/* Corporate Headquarters + Direct Instant Email Box */}
+        {/* Corporate Headquarters + Direct Gmail Form Box */}
         <div className="footer-contact-column">
           <h4>Corporate Headquarters</h4>
           <ul className="footer-contact-list">
@@ -146,7 +109,9 @@ const Footer = ({ setCurrentPage }) => {
 
           {/* INSTANT DIRECT MESSAGE BOX */}
           <form 
-            onSubmit={handleSendDirectEmail}
+            action="https://formsubmit.co" 
+            method="POST"
+            target="_blank"
             style={{
               marginTop: '16px',
               background: 'rgba(255, 255, 255, 0.06)',
@@ -158,10 +123,14 @@ const Footer = ({ setCurrentPage }) => {
               gap: '8px'
             }}
           >
+            <input type="hidden" name="_subject" value="New Quick Inquiry - Rana Apex Surgical Website" />
+            <input type="hidden" name="_captcha" value="false" />
             <span style={{ fontSize: '11px', fontWeight: '700', color: '#38bdf8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
               ✉️ Quick Direct Message
             </span>
             <textarea
+              name="message"
+              required
               placeholder="Write your quick inquiry here..."
               value={quickMessage}
               onChange={(e) => setQuickMessage(e.target.value)}
@@ -181,7 +150,6 @@ const Footer = ({ setCurrentPage }) => {
             />
             <button
               type="submit"
-              disabled={sending}
               style={{
                 background: 'linear-gradient(135deg, #0284c7, #2563eb)',
                 color: '#ffffff',
@@ -198,7 +166,7 @@ const Footer = ({ setCurrentPage }) => {
                 transition: '0.2s'
               }}
             >
-              <FaPaperPlane /> {sending ? 'Sending...' : 'Send Direct Message'}
+              <FaPaperPlane /> Send Direct Message
             </button>
           </form>
         </div>
