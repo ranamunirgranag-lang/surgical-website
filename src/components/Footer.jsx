@@ -4,6 +4,7 @@ import '../styles/Footer.css';
 
 const Footer = ({ setCurrentPage }) => {
   const [quickMessage, setQuickMessage] = useState('');
+  const [sending, setSending] = useState(false);
 
   const handleNavClick = (pageName, e) => {
     if (setCurrentPage) {
@@ -15,25 +16,47 @@ const Footer = ({ setCurrentPage }) => {
     }
   };
 
-  // ✅ 100% WORKING GMAIL WEB COMPOSER OPENER
-  const openGmailWeb = (messageText = '') => {
-    const email = "ranaapexsurgical640@gmail.com";
-    const subject = encodeURIComponent("Surgical Inquiry - Rana Apex Surgical");
-    const body = encodeURIComponent(messageText);
-    const base = "https://" + "://google.com" + "/mail/?view=cm&fs=1";
-    const fullUrl = `${base}&to=${email}&su=${subject}&body=${body}`;
-    window.open(fullUrl, '_blank', 'noopener,noreferrer');
-  };
-
-  const handleSendDirectEmail = (e) => {
+  // ✅ SEEDHA WEBSITE SE EMAIL BHEJNE WALA SYSTEM (Bina kisi external app ke!)
+  const handleSendDirectEmail = async (e) => {
     e.preventDefault();
     const msgText = quickMessage.trim();
     if (!msgText) {
       alert("Please type a short message first!");
       return;
     }
-    openGmailWeb(msgText);
-    setQuickMessage('');
+
+    setSending(true);
+    try {
+      const response = await fetch("https://formsubmit.co", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          _subject: "New Quick Inquiry - Rana Apex Surgical Website",
+          message: msgText
+        })
+      });
+
+      if (response.ok) {
+        alert("✅ Message Sent! Your inquiry has been delivered directly to Rana Apex Surgical.");
+        setQuickMessage('');
+      } else {
+        alert("⚠️ Could not send message right now. Please try again.");
+      }
+    } catch (error) {
+      alert("❌ Network error while sending message.");
+    } finally {
+      setSending(false);
+    }
+  };
+
+  // Upar wale email link par click karne ke liye
+  const openGmailTab = (e) => {
+    e.preventDefault();
+    const url = "https://" + "://google.com" + "/mail/?view=cm&fs=1&to=ranaapexsurgical640@gmail.com";
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -96,7 +119,7 @@ const Footer = ({ setCurrentPage }) => {
           </ul>
         </div>
 
-        {/* Corporate Headquarters + Quick Email Box */}
+        {/* Corporate Headquarters + Direct Instant Email Box */}
         <div className="footer-contact-column">
           <h4>Corporate Headquarters</h4>
           <ul className="footer-contact-list">
@@ -112,10 +135,7 @@ const Footer = ({ setCurrentPage }) => {
               <div className="icon-circle"><FaEnvelope /></div>
               <a 
                 href="#email"
-                onClick={(e) => {
-                  e.preventDefault();
-                  openGmailWeb("");
-                }}
+                onClick={openGmailTab}
                 className="footer-email-link"
                 style={{ color: '#38bdf8', textDecoration: 'underline', cursor: 'pointer' }}
               >
@@ -124,7 +144,7 @@ const Footer = ({ setCurrentPage }) => {
             </li>
           </ul>
 
-          {/* QUICK EMAIL MESSAGE BOX */}
+          {/* INSTANT DIRECT MESSAGE BOX */}
           <form 
             onSubmit={handleSendDirectEmail}
             style={{
@@ -139,7 +159,7 @@ const Footer = ({ setCurrentPage }) => {
             }}
           >
             <span style={{ fontSize: '11px', fontWeight: '700', color: '#38bdf8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-              ✉️ Quick Direct Email
+              ✉️ Quick Direct Message
             </span>
             <textarea
               placeholder="Write your quick inquiry here..."
@@ -161,6 +181,7 @@ const Footer = ({ setCurrentPage }) => {
             />
             <button
               type="submit"
+              disabled={sending}
               style={{
                 background: 'linear-gradient(135deg, #0284c7, #2563eb)',
                 color: '#ffffff',
@@ -177,7 +198,7 @@ const Footer = ({ setCurrentPage }) => {
                 transition: '0.2s'
               }}
             >
-              <FaPaperPlane /> Send via Gmail
+              <FaPaperPlane /> {sending ? 'Sending...' : 'Send Direct Message'}
             </button>
           </form>
         </div>
