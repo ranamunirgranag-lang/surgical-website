@@ -15,20 +15,19 @@ const Footer = ({ setCurrentPage }) => {
     }
   };
 
-  // 📧 DIRECT EMAIL LAUNCHER (Fixed)
-  const handleSendDirectEmail = (e) => {
+   const handleSendDirectEmail = (e) => {
     e.preventDefault();
     const msgText = (e.target.elements.inquiryBox?.value || quickMessage).trim();
     if (!msgText) {
       alert("Please type a short message first!");
       return;
     }
-    const subject = encodeURIComponent("Surgical Inquiry - Rana Apex Surgical");
-    const body = encodeURIComponent(msgText);
-    
-    window.location.href = `mailto:ranaapexsurgical640@://gmail.com{subject}&body=${body}`;
+    const domain = ["mail", "google", "com"].join(".");
+    const url = `https://${domain}/mail/?view=cm&fs=1&to=ranaapexsurgical640@gmail.com&su=Surgical%20Inquiry&body=${encodeURIComponent(msgText)}`;
+    window.open(url, "_blank");
     setQuickMessage('');
   };
+
 
   return (
     <footer className="modern-footer">
