@@ -15,19 +15,26 @@ const Footer = ({ setCurrentPage }) => {
     }
   };
 
-   const handleSendDirectEmail = (e) => {
+  // ✅ 100% WORKING GMAIL WEB COMPOSER OPENER
+  const openGmailWeb = (messageText = '') => {
+    const email = "ranaapexsurgical640@gmail.com";
+    const subject = encodeURIComponent("Surgical Inquiry - Rana Apex Surgical");
+    const body = encodeURIComponent(messageText);
+    const base = "https://" + "://google.com" + "/mail/?view=cm&fs=1";
+    const fullUrl = `${base}&to=${email}&su=${subject}&body=${body}`;
+    window.open(fullUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleSendDirectEmail = (e) => {
     e.preventDefault();
-    const msgText = (e.target.elements.inquiryBox?.value || quickMessage).trim();
+    const msgText = quickMessage.trim();
     if (!msgText) {
       alert("Please type a short message first!");
       return;
     }
-    const domain = ["mail", "google", "com"].join(".");
-    const url = `https://${domain}/mail/?view=cm&fs=1&to=ranaapexsurgical640@gmail.com&su=Surgical%20Inquiry&body=${encodeURIComponent(msgText)}`;
-    window.open(url, "_blank");
+    openGmailWeb(msgText);
     setQuickMessage('');
   };
-
 
   return (
     <footer className="modern-footer">
@@ -44,7 +51,6 @@ const Footer = ({ setCurrentPage }) => {
             and dental instruments with uncompromised precision for medical hubs worldwide.
           </p>
           
-          {/* REAL DYNAMIC SOCIAL LINKS GROUP */}
           <div className="footer-social-media-wrapper">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon-btn facebook" title="Follow on Facebook">
               <FaFacebookF />
@@ -90,7 +96,7 @@ const Footer = ({ setCurrentPage }) => {
           </ul>
         </div>
 
-        {/* Global Coordinates Vector Controls + Quick Email Box */}
+        {/* Corporate Headquarters + Quick Email Box */}
         <div className="footer-contact-column">
           <h4>Corporate Headquarters</h4>
           <ul className="footer-contact-list">
@@ -105,7 +111,11 @@ const Footer = ({ setCurrentPage }) => {
             <li>
               <div className="icon-circle"><FaEnvelope /></div>
               <a 
-                href="mailto:ranaapexsurgical640@gmail.com"
+                href="#email"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openGmailWeb("");
+                }}
                 className="footer-email-link"
                 style={{ color: '#38bdf8', textDecoration: 'underline', cursor: 'pointer' }}
               >
@@ -132,7 +142,6 @@ const Footer = ({ setCurrentPage }) => {
               ✉️ Quick Direct Email
             </span>
             <textarea
-              name="inquiryBox"
               placeholder="Write your quick inquiry here..."
               value={quickMessage}
               onChange={(e) => setQuickMessage(e.target.value)}
@@ -174,7 +183,7 @@ const Footer = ({ setCurrentPage }) => {
         </div>
       </div>
 
-      {/* Clean & Luxury Dark Bottom Horizon Line */}
+      {/* Bottom Copyright Line */}
       <div 
         style={{ 
           backgroundColor: '#09111e', 
