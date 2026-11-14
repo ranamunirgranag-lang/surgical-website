@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaGlobe, FaCertificate, FaShieldAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaPaperPlane, FaCode } from 'react-icons/fa';
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaCertificate, FaShieldAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaPaperPlane } from 'react-icons/fa';
 import '../styles/Footer.css';
 
 const Footer = ({ setCurrentPage }) => {
@@ -15,20 +15,20 @@ const Footer = ({ setCurrentPage }) => {
     }
   };
 
-  // 📧 DIRECT GMAIL WEB LAUNCHER: Browser mein seedha Gmail kholega
-   const handleSendDirectEmail = (e) => {
+  // 📧 DIRECT EMAIL LAUNCHER (Fixed)
+  const handleSendDirectEmail = (e) => {
     e.preventDefault();
-    if (!quickMessage.trim()) {
+    const msgText = (e.target.elements.inquiryBox?.value || quickMessage).trim();
+    if (!msgText) {
       alert("Please type a short message first!");
       return;
     }
     const subject = encodeURIComponent("Surgical Inquiry - Rana Apex Surgical");
-    const body = encodeURIComponent(quickMessage);
+    const body = encodeURIComponent(msgText);
     
     window.location.href = `mailto:ranaapexsurgical640@://gmail.com{subject}&body=${body}`;
     setQuickMessage('');
   };
-
 
   return (
     <footer className="modern-footer">
@@ -106,10 +106,7 @@ const Footer = ({ setCurrentPage }) => {
             <li>
               <div className="icon-circle"><FaEnvelope /></div>
               <a 
-              href="https://google.com"
-
-                target="_blank" 
-                rel="noopener noreferrer"
+                href="mailto:ranaapexsurgical640@gmail.com"
                 className="footer-email-link"
                 style={{ color: '#38bdf8', textDecoration: 'underline', cursor: 'pointer' }}
               >
@@ -118,7 +115,7 @@ const Footer = ({ setCurrentPage }) => {
             </li>
           </ul>
 
-          {/* 💌 PYARA SA QUICK EMAIL MESSAGE BOX */}
+          {/* QUICK EMAIL MESSAGE BOX */}
           <form 
             onSubmit={handleSendDirectEmail}
             style={{
@@ -136,6 +133,7 @@ const Footer = ({ setCurrentPage }) => {
               ✉️ Quick Direct Email
             </span>
             <textarea
+              name="inquiryBox"
               placeholder="Write your quick inquiry here..."
               value={quickMessage}
               onChange={(e) => setQuickMessage(e.target.value)}
@@ -177,7 +175,7 @@ const Footer = ({ setCurrentPage }) => {
         </div>
       </div>
 
-        {/* Clean & Luxury Dark Bottom Horizon Line */}
+      {/* Clean & Luxury Dark Bottom Horizon Line */}
       <div 
         style={{ 
           backgroundColor: '#09111e', 
@@ -193,32 +191,13 @@ const Footer = ({ setCurrentPage }) => {
           boxSizing: 'border-box'
         }}
       >
-        {/* Top Line: Copyright & Global Tag */}
         <p style={{ margin: 0, color: '#64748b', fontSize: '12.5px', letterSpacing: '0.4px' }}>
           &copy; {new Date().getFullYear()} <span style={{ color: '#94a3b8', fontWeight: '600' }}>RANA APEX SURGICAL</span>. All Engineering Rights Reserved. Global Medical Distribution Platform.
         </p>
-        
-        {/* Bottom Line: Sleek & Classy Blue Signature */}
-        <div 
-          style={{ 
-            fontSize: '11.5px', 
-            letterSpacing: '2.2px', 
-            textTransform: 'uppercase', 
-            color: '#94a3b8', 
-            fontWeight: '500',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '6px'
-          }}
-        >
-          <span>MADE WITH</span>
-          <span style={{ color: '#e11d48', fontSize: '13px' }}>♥</span>
-          <span>BY</span>
-          <span style={{ color: '#38bdf8', fontWeight: '600', letterSpacing: '2.5px' }}>FAQEEHA DEVELOPER</span>
-        </div>
+        <p style={{ margin: 0, color: '#38bdf8', fontSize: '12px', fontWeight: '700', letterSpacing: '1px', textTransform: 'uppercase' }}>
+          MADE WITH ❤️ BY FAQEEHA DEVELOPER
+        </p>
       </div>
-
     </footer>
   );
 };
