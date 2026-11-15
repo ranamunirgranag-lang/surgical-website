@@ -10,12 +10,12 @@ export default function UserDashboard() {
  
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
-  
-  const [userData, setUserData] = useState({
+   const [userData, setUserData] = useState({
     name: '',
     email: '',
     pmdcLicense: '', 
-    hospitalName: '' 
+    hospitalName: '',
+    profilePic: ''
   });
 
   const [passwordData, setPasswordData] = useState({
@@ -39,6 +39,7 @@ export default function UserDashboard() {
         if (response.data.success && response.data.user) {
           const dbUser = response.data.user;
           setUserData({
+            profilePic: dbUser.profilePic || '',
             name: dbUser.name || '',
             email: dbUser.email || '',
             pmdcLicense: dbUser.pmdcLicense || '', 
@@ -60,6 +61,48 @@ export default function UserDashboard() {
   const handleTabChange = (tabName) => {
     setActiveTab(tabName);
     localStorage.setItem('activeDashboardTab', tabName);
+  };
+  // 📸 GALLERY SE PHOTO SELECT AUR AUTO-COMPRESS + CLOUD SAVE
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = async () => {
+        const canvas = document.createElement('canvas');
+        const maxSize = 250;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxSize) { height *= maxSize / width; width = maxSize; }
+        } else {
+          if (height > maxSize) { width *= maxSize / height; height = maxSize; }
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.8);
+        setUserData((prev) => ({ ...prev, profilePic: compressedBase64 }));
+        localStorage.setItem('userPic', compressedBase64);
+
+        try {
+          await axios.put(`${BACKEND_API_URL}/auth/profile/update/${userId}`, {
+            profilePic: compressedBase64
+          });
+          alert("📸 Profile Picture updated successfully!");
+        } catch (err) {
+          console.error("DP save error:", err);
+        }
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleProfileUpdate = async (e) => {
@@ -256,35 +299,66 @@ export default function UserDashboard() {
           flexWrap: 'wrap'
         }}
       >
-        {/* AVATAR */}
-        {/* ⚡ FIXED: Agar Master Admin login ho ya localStorage mein userPic set ho, to avatar crash ya remove na ho background par */}
-        {localStorage.getItem('userPic') && localStorage.getItem('userPic') !== 'https://unsplash.com' ? (
-          <img 
-            src={localStorage.getItem('userPic')} 
-            alt="Profile View" 
-            style={{ width: '62px', height: '62px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, boxShadow: '0 6px 18px rgba(0,0,0,0.1)' }}
-          />
-        ) : (
-          <div
+                {/* AVATAR WITH GALLERY UPLOAD BUTTON */}
+        <div style={{ position: 'relative', width: '72px', height: '72px', flexShrink: 0 }}>
+          {userData.profilePic ? (
+            <img 
+              src={userData.profilePic} 
+              alt="Profile DP" 
+              style={{ width: '72px', height: '72px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #0284c7', boxShadow: '0 6px 18px rgba(0,0,0,0.12)' }}
+            />
+          ) : (
+            <div
+              style={{
+                width: '72px',
+                height: '72px',
+                background: 'linear-gradient(135deg, #0284c7 0%, #2563eb 100%)',
+                color: '#ffffff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '26px',
+                fontWeight: '800',
+                borderRadius: '50%',
+                boxShadow: '0 6px 18px rgba(2, 132, 199, 0.25)'
+              }}
+            >
+              {userData.name ? userData.name.charAt(0).toUpperCase() : 'U'}
+            </div>
+          )}
+
+          {/* Camera Icon Label (Opens Laptop/Mobile Gallery) */}
+          <label
+            htmlFor="gallery-dp-input"
+            title="Change Profile Picture"
             style={{
-              width: '62px',
-              height: '62px',
-              minWidth: '62px',
-              background: 'linear-gradient(135deg, #e11d48 0%, #be123c 100%)',
+              position: 'absolute',
+              bottom: '0',
+              right: '0',
+              background: '#0f172a',
               color: '#ffffff',
+              width: '26px',
+              height: '26px',
+              borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '24px',
-              fontWeight: '800',
-              borderRadius: '50%',
-              boxShadow: '0 6px 18px rgba(225, 29, 72, 0.25)',
-              flexShrink: 0
+              fontSize: '12px',
+              cursor: 'pointer',
+              border: '2px solid #ffffff',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.25)'
             }}
           >
-            {userData.name ? userData.name.charAt(0).toUpperCase() : 'U'}
-          </div>
-        )}
+            📷
+          </label>
+          <input
+            id="gallery-dp-input"
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            style={{ display: 'none' }}
+          />
+        </div>
 
         {/* PROFILE INFO */}
         <div
