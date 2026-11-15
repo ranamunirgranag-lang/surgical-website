@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // 👈 Direct axios import taake live url configure sahi chale
+import axios from 'axios';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaPaperPlane, FaTrash, FaShoppingBag } from 'react-icons/fa';
 import '../styles/Contact.css';
 
 const Contact = ({ inquiryCart = [], setInquiryCart }) => {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '', city: '', phone: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const userId = localStorage.getItem('token');
-
-  // Live URL Configuration Layout
   const BACKEND_API_URL = 'https://surgical-backend.vercel.app/api';
 
-
-  // 📡 DATABASE SE ACTIVE USER DETAILS FETCH KARKE FORM AUTO-FILL KRNY K LIYE
   useEffect(() => {
     const fetchUserData = async () => {
       if (userId) {
         try {
-          // Dynamic Absolute Connection
           const response = await axios.get(`${BACKEND_API_URL}/auth/profile/${userId}`);
           if (response.data.success && response.data.user) {
             const user = response.data.user;
@@ -41,35 +37,41 @@ const Contact = ({ inquiryCart = [], setInquiryCart }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleQuantityChange = (id, newQty) => {
+    const validQty = Math.max(1, Number(newQty) || 1);
+    const updatedCart = inquiryCart.map(item =>
+      item.id === id ? { ...item, quantity: validQty, qty: validQty } : item
+    );
+    if (setInquiryCart) setInquiryCart(updatedCart);
+  };
+
   const handleRemove = (id) => {
     const updatedCart = inquiryCart.filter(item => item.id !== id);
-    setInquiryCart(updatedCart);
+    if (setInquiryCart) setInquiryCart(updatedCart);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 🟢 FIXED LAYER: Agar token khali hai toh alert dikhayein
+    if (isSubmitting) return;
+
     if (!userId) {
       alert("Please login/register your surgical account before transmitting inquiries!");
       return;
     }
 
+    setIsSubmitting(true);
     try {
-      // Mapping image path and sku directly from cart to database payload array
-     // 🟢 FIXED: Asli price aur quantity ko cart se dynamic pass karne ke liye
-const realProductsArray = inquiryCart.map(item => ({
-  id: item.id || item._id || "123",
-  name: item.name || "Surgical Instrument",
-  sku: item.sku || `RA-${Math.floor(1000 + Math.random() * 9000)}`,
-  category: item.category || "General Surgery Tools",
-  image: item.image || item.imageUrl || item.img || "", 
-  quantity: Number(item.quantity || item.qty || 1),
-  price: Number(item.price || 0) // 👈 HACK FIXED: Ab hardcoded 150 nahi jayega, product ki asli price database me jaye gi!
-}));
+      const realProductsArray = inquiryCart.map(item => ({
+        id: item.id || item._id || "123",
+        name: item.name || "Surgical Instrument",
+        sku: item.sku || `RA-${Math.floor(1000 + Math.random() * 9000)}`,
+        category: item.category || "General Surgery Tools",
+        image: item.image || item.imageUrl || item.img || "", 
+        quantity: Number(item.quantity || item.qty || 1),
+        price: Number(item.price || 0)
+      }));
 
-
-      // 🟢 FIXED: Agar login token ke andar poori object ya token string hai toh use safe string banayein
       const cleanUserId = userId.length > 30 ? "653b2026af8dad1234567890" : userId; 
 
       const backendDataPayload = {
@@ -84,14 +86,12 @@ const realProductsArray = inquiryCart.map(item => ({
         itemsCount: Number(inquiryCart.length)
       };
 
-      // 🌟 FULL ABSOLUTE URL CONNECTION
-      // Backend ke '/api/auth' routes file mein '/inquiry/submit' mount hai, toh perfect route ye banta hai:
       const response = await axios.post(`${BACKEND_API_URL}/auth/inquiry/submit`, backendDataPayload);
       
       if (response.data.success) {
         alert("🎯 Success: Your RFQ Request has been securely saved to MongoDB Cloud Database!");
         if (setInquiryCart) setInquiryCart([]); 
-        setFormData({ name: '', email: '', company: '', message: '', city: '', phone: '' });
+        setFormData(prev => ({ ...prev, company: '', message: '' }));
       } else {
         alert(`⚠️ Backend Alert: ${response.data.msg}`);
       }
@@ -99,10 +99,11 @@ const realProductsArray = inquiryCart.map(item => ({
       console.error("Live submission catch intercepted:", error);
       const errorMsg = error.response?.data?.msg || error.response?.data?.message || error.message;
       alert(`❌ Submission Blocked: ${errorMsg}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
-
-  return (
+    return (
     <div className="contact-page-container">
       <div className="contact-premium-split-grid">
         
@@ -134,34 +135,64 @@ const realProductsArray = inquiryCart.map(item => ({
               <div className="hq-icon-box"><FaEnvelope /></div>
               <div className="hq-text">
                 <h4>Business Email</h4>
-                <p>ranaapexsurigical640@gmail.com</p>
+                <p>ranaapexsurgical640@gmail.com</p>
               </div>
             </div>
           </div>
 
-          {/* DYNAMIC SURGICAL BUCKET ITEMS RENDERING */}
+          {/* DYNAMIC SURGICAL BUCKET ITEMS RENDERING WITH QUANTITY CONTROLS */}
           <div className="live-bucket-section" style={{ borderTop: '1px solid rgba(255,255,255,0.2)', paddingTop: '20px', marginTop: '10px' }}>
             <h4 style={{ color: 'white', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '15px', fontSize: '16px' }}>
               <FaShoppingBag style={{ color: '#38bdf8' }} /> Selected Instruments ({inquiryCart.length})
             </h4>
             
             {inquiryCart.length > 0 ? (
-              <div className="bucket-items-scroll-box" style={{ maxHeight: '200px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px', paddingRight: '5px' }}>
-                {inquiryCart.map((item) => (
-                  <div key={item.id} className="mini-bucket-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(255,255,255,0.1)', padding: '10px 14px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.15)' }}>
-                    <div style={{ textAlign: 'left' }}>
-                      <span style={{ fontSize: '10px', background: '#38bdf8', color: '#0f172a', padding: '2px 6px', borderRadius: '4px', fontWeight: 'bold' }}>{item.sku}</span>
-                      <h5 style={{ color: 'white', margin: '4px 0 0 0', fontSize: '13px', fontWeight: '600' }}>{item.name}</h5>
+              <div className="bucket-items-scroll-box" style={{ maxHeight: '240px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px', paddingRight: '5px' }}>
+                {inquiryCart.map((item) => {
+                  const currentQty = Number(item.quantity || item.qty || 1);
+                  return (
+                    <div key={item.id} className="mini-bucket-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', background: 'rgba(255,255,255,0.1)', padding: '10px 12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.15)' }}>
+                      <div style={{ textAlign: 'left', flex: 1, minWidth: 0 }}>
+                        <span style={{ fontSize: '10px', background: '#38bdf8', color: '#0f172a', padding: '2px 6px', borderRadius: '4px', fontWeight: 'bold' }}>{item.sku}</span>
+                        <h5 style={{ color: 'white', margin: '4px 0 0 0', fontSize: '13px', fontWeight: '600', wordBreak: 'break-word' }}>{item.name}</h5>
+                      </div>
+
+                      {/* QUANTITY CONTROLS (- / Input / +) */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(15, 23, 42, 0.7)', padding: '3px 5px', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.2)' }}>
+                        <button
+                          type="button"
+                          onClick={() => handleQuantityChange(item.id, currentQty - 1)}
+                          style={{ background: 'transparent', color: '#38bdf8', border: 'none', width: '22px', height: '22px', fontWeight: 'bold', fontSize: '15px', cursor: 'pointer' }}
+                        >
+                          −
+                        </button>
+                        <input
+                          type="number"
+                          min="1"
+                          value={currentQty}
+                          onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+                          style={{ width: '42px', textAlign: 'center', background: 'transparent', color: '#ffffff', border: 'none', fontSize: '12px', fontWeight: '700', outline: 'none' }}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => handleQuantityChange(item.id, currentQty + 1)}
+                          style={{ background: 'transparent', color: '#38bdf8', border: 'none', width: '22px', height: '22px', fontWeight: 'bold', fontSize: '15px', cursor: 'pointer' }}
+                        >
+                          +
+                        </button>
+                      </div>
+
+                      <button 
+                        type="button"
+                        onClick={() => handleRemove(item.id)} 
+                        title="Remove Item"
+                        style={{ background: 'rgba(239, 68, 68, 0.2)', color: '#f87171', border: 'none', width: '28px', height: '28px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', flexShrink: 0 }}
+                      >
+                        <FaTrash />
+                      </button>
                     </div>
-                    <button 
-                      type="button"
-                      onClick={() => handleRemove(item.id)} 
-                      style={{ background: 'rgba(239, 68, 68, 0.2)', color: '#f87171', border: 'none', width: '28px', height: '28px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', transition: '0.2s' }}
-                    >
-                      <FaTrash />
-                    </button>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             ) : (
               <div style={{ background: 'rgba(255,255,255,0.05)', padding: '20px', borderRadius: '12px', border: '1px dashed rgba(255,255,255,0.2)', fontSize: '13px', color: '#cbd5e1' }}>
@@ -191,8 +222,14 @@ const realProductsArray = inquiryCart.map(item => ({
             <input type="text" name="company" value={formData.company} onChange={handleInputChange} placeholder="Medical Practice / Company Name" className="full-width-input" />
             <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Describe specific sizes, dynamic parameters or specific material grades needed..." required className="full-width-textarea" />
 
-            <button type="submit" className="submit-rfq-button">
-              <FaPaperPlane style={{ marginRight: '8px' }} /> TRANSMIT RFQ SPECIFICATIONS
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="submit-rfq-button"
+              style={{ opacity: isSubmitting ? 0.65 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+            >
+              <FaPaperPlane style={{ marginRight: '8px' }} />
+              {isSubmitting ? 'TRANSMITTING RFQ...' : 'TRANSMIT RFQ SPECIFICATIONS'}
             </button>
           </form>
         </div>
@@ -203,3 +240,4 @@ const realProductsArray = inquiryCart.map(item => ({
 };
 
 export default Contact;
+
