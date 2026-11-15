@@ -15,7 +15,8 @@ function LoginSignup({ setCurrentPage }) {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState('');
 
-  const BACKEND_API_URL = 'https://vercel.app';
+  const BACKEND_API_URL = 'https://surgical-backend.vercel.app/api';
+;
 
   const checkPasswordStrength = (password) => {
     if (!password) { setPasswordStrength(''); return; }
